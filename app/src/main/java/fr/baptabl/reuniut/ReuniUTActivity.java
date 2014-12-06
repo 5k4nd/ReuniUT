@@ -81,8 +81,12 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
 
 
 
-
     
+
+
+
+
+
 /*
     void connexionCAS() {
         // HttpClient httpclient = new DefaultHttpClient();
