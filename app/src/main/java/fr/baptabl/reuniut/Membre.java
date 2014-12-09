@@ -8,5 +8,5 @@ public class Membre {
     private Membre suivant;
 
     public UTCeen getId(){return null;}
-    //Salut
+    //Salut Quentin !
 }
