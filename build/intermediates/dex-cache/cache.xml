@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="/media/datum/Java/ReuniUT/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/libs/internal_impl-21.0.2.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
-        <dex dex="/media/datum/Java/ReuniUT/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-bda06f05fbb219d12e9dcc7b73ad0deaba261904.jar" />
-    </item>
-    <item
-        jar="/media/datum/Java/ReuniUT/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
+        jar="/media/datum/Java/ReuniUT_Jean/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
-        <dex dex="/media/datum/Java/ReuniUT/app/build/intermediates/pre-dexed/debug/classes-cad8a6d143a15bf5f047c5c5f81689dc9da660bf.jar" />
+        <dex dex="/media/datum/Java/ReuniUT_Jean/app/build/intermediates/pre-dexed/debug/classes-6a684e099f69813f5ad83d944b4ab773f2ed6e8b.jar" />
+    </item>
+    <item
+        jar="/media/datum/Java/ReuniUT_Jean/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="/media/datum/Java/ReuniUT_Jean/app/build/intermediates/pre-dexed/debug/classes-722e0199362706a1e79ce1a37c2d6acca1548c0c.jar" />
+    </item>
+    <item
+        jar="/media/datum/Java/ReuniUT_Jean/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/libs/internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="/media/datum/Java/ReuniUT_Jean/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-002a4ff590440d5418787adb1913ccb337cbc4d7.jar" />
     </item>
     <item
         jar="/opt/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="/media/datum/Java/ReuniUT/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1e9bba1e7979125665c442d859d2bfa58fa53060.jar" />
-    </item>
-    <item
-        jar="/media/datum/Java/ReuniUT/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
-        <dex dex="/media/datum/Java/ReuniUT/app/build/intermediates/pre-dexed/debug/classes-38bedb01c1c700526d4040578c133b917d3ee8eb.jar" />
+        <dex dex="/media/datum/Java/ReuniUT_Jean/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-1e9bba1e7979125665c442d859d2bfa58fa53060.jar" />
     </item>
 
 </items>
