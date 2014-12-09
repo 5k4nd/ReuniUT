@@ -21,6 +21,7 @@ public class Groupe extends LinkedList{
     private void next(){}
     private Membre MembreActuel(){return this.membres;}
     private boolean isDone(){return true;}
+
     
 
 
