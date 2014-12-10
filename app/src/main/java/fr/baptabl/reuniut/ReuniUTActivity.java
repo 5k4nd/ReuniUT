@@ -1,5 +1,6 @@
 package fr.baptabl.reuniut;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
-
 
 public class ReuniUTActivity extends ActionBarActivity implements View.OnClickListener/*, ImageGetter*/ {
     /*
@@ -71,10 +71,12 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
         Toast toast = Toast.makeText(this,strKeeplog, duration);
         toast.show();
 
+        Intent newActivity = new Intent(ReuniUTActivity.this, ReuniUTMenu.class);
 
+        // on rajoute un extra
+        //newActivity.putExtra(AGE, 31);
 
-
-
+        startActivity(newActivity);
 
     }
 

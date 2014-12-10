@@ -1,10 +1,11 @@
 package fr.baptabl.reuniut;
 
-import java.util;
+import java.util.Date;
 
 /**
  * Created by jean on 20/11/14.
  */
+
 public class Reunion {
 	private Groupe essentiel;
 	private Groupe optionnel;
@@ -29,11 +30,11 @@ public class Reunion {
 
 	//Getters and Setters
 	private void setEssentiel(Groupe groupe){
-		this.groupe=groupe;
+		this.essentiel=groupe;
 	}
 
 	private void setOptionnel(Groupe groupe){
-		this.groupe=groupe;
+		this.essentiel=groupe;
 	}
 
 	private EnsCreneau trouveCreneau(){

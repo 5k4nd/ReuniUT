@@ -1,11 +1,12 @@
 package fr.baptabl.reuniut;
 
-import java.util;
+//import java.util;
+
+import java.util.Date;
 
 /**
  * Created by Quentin on 10/12/14.
  */
-
 
 public class Creneau{
 	private Date debut;

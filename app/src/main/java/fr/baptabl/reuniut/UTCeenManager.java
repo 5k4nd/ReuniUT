@@ -3,6 +3,7 @@ package fr.baptabl.reuniut;
 /**
  * Created by jean on 20/11/14.
  */
+
 public class UTCeenManager {
 	private UTCeen utceen;
 	private UTCeen first;
@@ -42,7 +43,7 @@ public class UTCeenManager {
 	private void ajoutUTCeen(String nom, String prenom, String login){
 	} 
 
-	private UTCceen getUTCeen(String nom, String prenom, String login){return null;} 
+	//private UTCceen getUTCeen(String nom, String prenom, String login){return null;}
 
 
 }
