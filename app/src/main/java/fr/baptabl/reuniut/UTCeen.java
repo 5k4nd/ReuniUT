@@ -7,10 +7,10 @@ public class UTCeen{
     private String nom;
     private String prenom;
     private String login;
-    private String emploi;
+    private Emploi emploi;
 
-    //Constructors
-    private UTCeen(String nom,String prenom, String login, String emploi){
+    //Constructor
+    private UTCeen(String nom,String prenom, String login, Emploi emploi){
         this.nom=nom;
         this.prenom=prenom;
         this.login=login;
@@ -21,31 +21,25 @@ public class UTCeen{
     public String getNom(){
         return nom;
     }
-    public void setNom(String nom){
-        this.nom=nom;
-    }
 
     public String getPrenom(){
         return prenom;
-    }
-    public void setPrenom(){
-        this.prenom=prenom;
     }
 
     public String getLogin(){
         return login;
     }
-    private void setLogin(String login){
+
+    public void setUTCeenName(String nom, String prenom){
+        this.nom=nom;
+        this.prenom=prenom;
+    }
+
+    public void setUTCeenId(String login){
         this.login=login;
     }
 
-    public String getEmploi(){
-        return emploi;
-    }
-    public void setEmploi(String emploi){
-        this.emploi=emploi;
-    }
-
+    //methods
     private void creer_emploi(){
     }
 }
