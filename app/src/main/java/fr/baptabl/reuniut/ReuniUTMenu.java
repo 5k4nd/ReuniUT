@@ -35,8 +35,8 @@ public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListen
         buttLogout = (Button) findViewById(R.id.buttLogout);
         buttLogout.setOnClickListener(this);
 
-        //on récupère l'extra passé par ReuniUTActivity
-        //boolean connectionReussie = i.getIntExtra(ReuniUTActivity.connectionReussie, 0);
+        //on récupère l'extra passé par ActivityLogin
+        //boolean connectionReussie = i.getIntExtra(ActivityLogin.connectionReussie, 0);
 
 
     }

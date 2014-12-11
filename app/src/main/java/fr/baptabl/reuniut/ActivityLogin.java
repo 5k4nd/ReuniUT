@@ -11,11 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ReuniUTActivity extends ActionBarActivity implements View.OnClickListener/*, ImageGetter*/ {
+public class ActivityLogin extends ActionBarActivity implements View.OnClickListener/*, ImageGetter*/ {
 //login
     private String login;
     private String password;
 
+    //surcharge (overloading)
+    public String getTicket(){ return "null"; }
     public String getTicket(String login, String password) {
         String ticket = "null";
 
@@ -96,7 +98,7 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
             ThrowConnect.setText(ticket);
 
             /*
-            Intent newActivity = new Intent(ReuniUTActivity.this, ReuniUTMenu.class);
+            Intent newActivity = new Intent(ActivityLogin.this, ReuniUTMenu.class);
             // on rajoute un extra à passer à la nouvelle activité
             //newActivity.putExtra(AGE, 31);
             startActivity(newActivity);
