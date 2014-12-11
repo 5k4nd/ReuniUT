@@ -6,25 +6,13 @@ package fr.baptabl.reuniut;
 
 
 public class Emploi{
-	private EnsCreneau journee[]=new EnsCreneau[7];
+	private EnsCreneau journee[];
 
 	private Emploi(EnsCreneau journee[]){
 		this.journee=journee;
 	}
 
-	private Emploi First(){
-		return null;
-	}
-
-	private Emploi Next(){
-		return null;
-	}
-
-	private boolean isDone(){
-		return false;
-	}
-
-	private EnsCreneau getJournee(){
-		return null;
-	}
+    public EnsCreneau getJournee(int n){
+        return journee[n];
+    }
 }
