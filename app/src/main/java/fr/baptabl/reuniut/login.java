@@ -4,8 +4,19 @@ package fr.baptabl.reuniut;
  * Created by bat on 09/12/14.
  */
 public class login {
+    private String login;
+    private String password;
 
-    // connexionCAS('login', 'password');
+    public login(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
+    private String getTicket() {
+        String ticket = null;
+
+        ticket = "login";
+        // connexionCAS('login', 'password');
 
     /*
     void connexionCAS() {
@@ -28,10 +39,9 @@ public class login {
 
 
     }
-
-    private connect(String, String) {
-
-    }
 */
+        return ticket;
+    }
+
 
 }

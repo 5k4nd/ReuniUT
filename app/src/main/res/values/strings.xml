@@ -11,7 +11,10 @@
     <string name="logout">Se déconnecter</string>
 
     <string name="bold">ceci est un <b>gros</b> mot !</string>
-
+    <string name="logOut">Se déconnecter</string>
+    <string name="CreerGroupe">Créer un groupe</string>
+    <string name="CreerReu">Créer une réunion</string>
+    <string name="VoirEDT">Consulter votre EdT</string>
 
 
 </resources>

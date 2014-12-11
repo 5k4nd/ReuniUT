@@ -25,12 +25,12 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
         }
     */
     //RelativeLayout layout = null;
-    TextView logoUTC = null;
-    EditText fieldLogin = null;
-    EditText fieldPasswd = null;
+    private TextView logoUTC = null;
+    private EditText fieldLogin = null;
+    private EditText fieldPasswd = null;
 
-    CheckBox keepLogin = null;
-    Button buttLogin = null; //= new Button (this, R.style.rect_field);
+    private CheckBox keepLogin = null;
+    private Button buttLogin = null; //= new Button (this, R.style.rect_field);
 
 
     @Override
@@ -41,19 +41,17 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
 
         fieldLogin = (EditText)findViewById(R.id.fieldLogin);
         fieldPasswd = (EditText)findViewById(R.id.fieldPasswd);
-
         keepLogin = (CheckBox) findViewById(R.id.keepLogin);
         //keepLogin.setOnClickListener(checkedListener);
-
         buttLogin = (Button) findViewById(R.id.buttLogin);
         buttLogin.setOnClickListener(this);
 
-
-        //setContentView(layout);
     }
 
     @Override // CONNECTION
     public void onClick(View v) {
+        //public final static boolean connectionReussie = false;
+        int connectionReussie= 3;
         Button b = (Button) v;
         b.setText("Connexion en cours...");
         CharSequence strKeeplog = null;
@@ -73,15 +71,11 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
 
         Intent newActivity = new Intent(ReuniUTActivity.this, ReuniUTMenu.class);
 
-        // on rajoute un extra
-        //newActivity.putExtra(AGE, 31);
-
+        // on rajoute un extra à passer à la nouvelle activité
+        //newActivity.putExtra(connectionReussie, connectionReussie);
         startActivity(newActivity);
 
     }
-
-
-
 
 	/*
 	@Override
@@ -96,9 +90,6 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
 		return retour;
 	}
 	*/
-
-
-
 
 
     @Override
