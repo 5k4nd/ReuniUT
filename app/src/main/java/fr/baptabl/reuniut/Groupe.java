@@ -26,7 +26,6 @@ public class Groupe extends LinkedList<UTCeen>{
     private void addMembre(UTCeen utceen){}
     private void delMembre(UTCeen utceen){}
     private void next(){}
-    private Membre MembreActuel(){return this.membres;}
     private boolean isDone(){return true;}
 
 }
