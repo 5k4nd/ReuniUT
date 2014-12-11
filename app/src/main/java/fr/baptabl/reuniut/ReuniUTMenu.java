@@ -1,15 +1,11 @@
 package fr.baptabl.reuniut;
 
-import android.view.View.OnTouchListener;
-import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by bat on 10/12/14.
@@ -30,7 +26,6 @@ public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListen
         setContentView(R.layout.activity_menu);
 
         erreurs = (TextView) findViewById(R.id.erreurs);
-        erreurs.setText("salut");
         buttCreerGroupe = (Button) findViewById(R.id.buttCreerGroupe);
         buttCreerGroupe.setOnClickListener(this);
         buttCreerReu = (Button) findViewById(R.id.buttCreerReu);
@@ -48,8 +43,8 @@ public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        //erreurs = (TextView) findViewById(R.id.erreurs);
-        Button buttLogout = (Button) v;
+        erreurs = (TextView) findViewById(R.id.erreurs);
+        //Button buttLogout = (Button) v;
         switch(v.getId()){
             case R.id.buttLogout:
                 erreurs.setText("je me déco!");
