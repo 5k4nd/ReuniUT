@@ -10,7 +10,7 @@ import android.widget.TextView;
 /**
  * Created by bat on 10/12/14.
  */
-
+// ceci est un TEST
 public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListener {
     private TextView erreurs = null ;
     private Button buttCreerGroupe = null;
