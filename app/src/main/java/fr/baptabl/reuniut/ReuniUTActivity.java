@@ -16,6 +16,8 @@ import android.widget.Toast;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+/* ceci est un test */
+
 public class ReuniUTActivity extends ActionBarActivity implements View.OnClickListener/*, ImageGetter*/ {
     /*
         @Override
