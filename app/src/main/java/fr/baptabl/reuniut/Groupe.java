@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 public class Groupe extends LinkedList<UTCeen>{
     private String nom;
-    private Membre membres;
 
 
     //Constructor
