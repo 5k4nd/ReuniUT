@@ -5,12 +5,9 @@ package fr.baptabl.reuniut;
  */
 import java.util.LinkedList;
 
-public class Groupe extends LinkedList{
+public class Groupe extends LinkedList<UTCeen>{
     private String nom;
-    private int id;
-    private Groupe suivant;
-    private Membre membres;
-    private Membre premier;
+
 
     //Constructor
     private Groupe(String nom){
@@ -21,14 +18,8 @@ public class Groupe extends LinkedList{
     public String getNom(){
         return nom;
     }
-    public int getId(){
-        return id;
-    }
     public void setNom(String nom){
         this.nom=nom;
-    }
-    public void setId(int id){
-        this.id=id;
     }
 
     //methods
