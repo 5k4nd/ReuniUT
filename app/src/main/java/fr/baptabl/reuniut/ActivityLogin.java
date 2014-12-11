@@ -1,5 +1,6 @@
 package fr.baptabl.reuniut;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -97,12 +98,12 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
         else {
             ThrowConnect.setText(ticket);
 
-            /*
-            Intent newActivity = new Intent(ActivityLogin.this, ReuniUTMenu.class);
+            
+            Intent newActivity = new Intent(ActivityLogin.this, ActivityMenu.class);
             // on rajoute un extra à passer à la nouvelle activité
             //newActivity.putExtra(AGE, 31);
             startActivity(newActivity);
-            */
+
         }
     }
 
