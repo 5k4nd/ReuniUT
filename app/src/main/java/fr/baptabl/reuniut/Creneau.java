@@ -14,11 +14,16 @@ public class Creneau{
 	private Lieu lieu;
 
 	//Constructor
-	private Creneau(Date debut, Date fin, Lieu lieu){
-		this.debut=debut;
-		this.fin=fin;
-		this.lieu=lieu;
+	private Creneau(Date d, Date f, Lieu l){
+		this.debut=d;
+		this.fin=f;
+		this.lieu=l;
 	}
+
+    private Creneau(Date d, Date f){
+        this.debut=d;
+        this.fin=f;
+    }
 
 	//Getters
 	private Date getDebut(){
