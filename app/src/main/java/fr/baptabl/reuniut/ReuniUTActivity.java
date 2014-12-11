@@ -1,11 +1,9 @@
 package fr.baptabl.reuniut;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,10 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 public class ReuniUTActivity extends ActionBarActivity implements View.OnClickListener/*, ImageGetter*/ {
+//login
+    private String login;
+    private String password;
+
+    public String getTicket(String login, String password) {
+        String ticket = "null";
+
+        ticket = "1195648";
+
+        return ticket;
+    }
+
     /*
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +31,8 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
             setContentView(R.layout.activity_login);
         }
     */
+
+//Interface
     //RelativeLayout layout = null;
     private TextView logoUTC = null;
     private EditText fieldLogin = null;
@@ -32,31 +41,31 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
     private CheckBox keepLogin = null;
     private Button buttLogin = null; //= new Button (this, R.style.rect_field);
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_reuni_ut);
 
-        fieldLogin = (EditText)findViewById(R.id.fieldLogin);
-        fieldPasswd = (EditText)findViewById(R.id.fieldPasswd);
+        fieldLogin = (EditText) findViewById(R.id.fieldLogin);
+        fieldPasswd = (EditText) findViewById(R.id.fieldPasswd);
         keepLogin = (CheckBox) findViewById(R.id.keepLogin);
         //keepLogin.setOnClickListener(checkedListener);
         buttLogin = (Button) findViewById(R.id.buttLogin);
         buttLogin.setOnClickListener(this);
 
+
     }
 
-    @Override // CONNECTION
+//redéfinition de onClick => CONNECTION
+    @Override
     public void onClick(View v) {
-        //public final static boolean connectionReussie = false;
-        int connectionReussie= 3;
+        TextView ThrowConnect = (TextView) findViewById(R.id.ThrowConnect);
         Button b = (Button) v;
         b.setText("Connexion en cours...");
-        CharSequence strKeeplog = null;
-        String login = fieldLogin.getText().toString();
 
+    //keepLogin
+        CharSequence strKeeplog = null;
         if (keepLogin.isChecked()) {
             strKeeplog = "login enregistré";
             // setString(R.string.login=login); // att., impossible de mod. le strings.xml dynamiquement !
@@ -69,12 +78,30 @@ public class ReuniUTActivity extends ActionBarActivity implements View.OnClickLi
         Toast toast = Toast.makeText(this,strKeeplog, duration);
         toast.show();
 
-        Intent newActivity = new Intent(ReuniUTActivity.this, ReuniUTMenu.class);
+    //CAS
+        Boolean connectionReussie = true;
+        login = fieldLogin.getText().toString();
+        password = fieldPasswd.getText().toString();
 
-        // on rajoute un extra à passer à la nouvelle activité
-        //newActivity.putExtra(connectionReussie, connectionReussie);
-        startActivity(newActivity);
+        String ticket = getTicket(login, password);
 
+
+
+
+        if (ticket=="null") {
+            b.setText("Se connecter");
+            ThrowConnect.setText("Connexion impossible");
+        }
+        else {
+            ThrowConnect.setText(ticket);
+
+            /*
+            Intent newActivity = new Intent(ReuniUTActivity.this, ReuniUTMenu.class);
+            // on rajoute un extra à passer à la nouvelle activité
+            //newActivity.putExtra(AGE, 31);
+            startActivity(newActivity);
+            */
+        }
     }
 
 	/*

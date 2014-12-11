@@ -47,11 +47,16 @@ public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListen
         //Button buttLogout = (Button) v;
         switch(v.getId()){
             case R.id.buttLogout:
+
+
+
+
+
                 erreurs.setText("je me déco!");
             break;
 
             case R.id.buttCreerGroupe:
-                //blop
+                //créer groupe
             break;
 
             case R.id.buttCreerReu:

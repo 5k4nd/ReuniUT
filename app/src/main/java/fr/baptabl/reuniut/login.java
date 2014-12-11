@@ -3,6 +3,16 @@ package fr.baptabl.reuniut;
 /**
  * Created by bat on 09/12/14.
  */
+
+/*
+
+CLASSE À SUPPRIMER
+
+ */
+
+
+
+/*
 public class login {
     private String login;
     private String password;
@@ -39,9 +49,10 @@ public class login {
 
 
     }
-*/
+
         return ticket;
     }
 
 
 }
+*/
