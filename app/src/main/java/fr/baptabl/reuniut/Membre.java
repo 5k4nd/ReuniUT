@@ -3,7 +3,7 @@ package fr.baptabl.reuniut;
 /**
  * Created by bat on 09/12/14.
  */
-public class Membre {
+public class Membre extends LinkedList<UTCeen> {
     private UTCeen id;
     private Membre suivant;
 
