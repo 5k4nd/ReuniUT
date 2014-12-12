@@ -1,6 +1,7 @@
 package fr.baptabl.reuniut;
 
 import java.util.Date;
+import java.util.ListIterator;
 
 /**
  * Created by jean on 20/11/14.
@@ -45,10 +46,22 @@ public class Reunion {
 		return true;
 	}
 
-	/*private EnsCreneau getLibre(EnsCreneau ens){
+    private EnsCreneau getLibre(EnsCreneau ens)
+    {
+        ListIterator<Creneau> i = ens.listIterator(0);
+        while (i.hasNext() && i.next().getDebut().getTime()<fin_max.getTime())
+        {
+            if (i.next().getFin().getTime() > date_min.getTime()) {
+                if (date_min.getTime() < i.next().getDebut().getTime()) {
+
+                }
+            }
+        }
 
 
-	}*/
+        return null;
+
+	}
 
 
 

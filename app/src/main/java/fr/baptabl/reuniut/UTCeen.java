@@ -10,12 +10,12 @@ public class UTCeen{
     private Emploi emploi;
 
     //Constructor
-    private UTCeen(String nom,String prenom, String login){
+    private UTCeen(String nom,String prenom, String login, String edt){
         //Verification de l'existence, récupération de l'emploi du temps
         this.nom=nom;
         this.prenom=prenom;
         this.login=login;
-        //Construire emploi
+        this.emploi = new Emploi(edt);
     }
 
     //Getters & Setters
@@ -44,7 +44,4 @@ public class UTCeen{
         return emploi;
     }
 
-    //methods
-    private void creer_emploi(){
-    }
 }
