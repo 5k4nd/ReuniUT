@@ -30,13 +30,13 @@ public class Creneau implements java.lang.Comparable<Creneau>{
 	      else return 1; 
 	   } 
 	//Constructor
-	private Creneau(Date d, Date f, Lieu l){
+	public Creneau(Date d, Date f, Lieu l){
 		this.debut=d;
 		this.fin=f;
 		this.lieu=l;
 	}
 
-    private Creneau(Date d, Date f){
+    public Creneau(Date d, Date f){
         this.debut=d;
         this.fin=f;
     }
@@ -75,6 +75,16 @@ public class Creneau implements java.lang.Comparable<Creneau>{
 
 	public Lieu getLieu(){
 		return lieu;
+	}
+	public void setDebut(Date d){
+		debut=d;
+	}
+	public void setFin(Date f){
+		fin=f;
+	}
+	public void  printCreneau()
+	{
+		System.out.println("Début : "+debut.toString()+" ------ Fin : "+fin.toString());
 	}
 
 
