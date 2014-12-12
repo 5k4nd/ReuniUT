@@ -52,7 +52,7 @@ public class ActivityMenu extends ActionBarActivity implements View.OnClickListe
 
 
 
-                erreurs.setText("je me déco!");
+                erreurs.setText("Vous vous déconnectez ! bien ouej!");
             break;
 
             case R.id.buttCreerGroupe:

@@ -29,15 +29,16 @@ public class CAS {
     public CAS() {
         this.EstIdentifie = false;
         //gérer les erreurs !
-        }
+    }
+
     public CAS(String login, String password) {
         this.login = login;
         this.password = password;
         this.EstIdentifie = true;//tant que le CAS n'est pas opérationnel
     }
 
-//HTTP-request
-    String postData() throws  Exception {
+    //HTTP-request
+    String postData() throws Exception {
         String reponse = null;
         try {
 
@@ -53,8 +54,7 @@ public class CAS {
             parametresPost.add(new BasicNameValuePair("password", "NKJfxm53"));
             try {
                 myPost.setEntity(new UrlEncodedFormEntity(parametresPost));
-            }
-            catch (UnsupportedEncodingException e) {
+            } catch (UnsupportedEncodingException e) {
                 // writing error to Log
                 e.printStackTrace();
             }
@@ -77,7 +77,8 @@ public class CAS {
                 e.printStackTrace();
             }
 
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         //Log.v("REQUETE ", reponse);
         //reponse = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
         return reponse;
@@ -103,7 +104,10 @@ public class CAS {
     }
 
 
-    public String getTicket() { return "null"; }
+    public String getTicket() {
+        return "null";
+    }
+
     public String getTicket(String login, String password) {
         String ticket = "null";
 
@@ -112,14 +116,22 @@ public class CAS {
         barbareno = barbareno.substring(1, 5);
         Log.v("HTTP", barbareno);
 
-        ticket = "login : "+login+"et password : "+password;
+        ticket = "login : " + login + "et password : " + password;
 
         return ticket;
     }
 
 
+    private String getEdt(String edt) {
+        if (this.EstIdentifie == false)
+            return "null";
+        else {
+            return "null";
 
 
+
+        }
+    }
 }
 
 
