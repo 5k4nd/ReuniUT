@@ -121,7 +121,6 @@ public class CAS {
         return ticket;
     }
 
-
     private String getEdt(String edt) {
         if (this.EstIdentifie == false)
             return "null";
