@@ -27,58 +27,79 @@
     tools:context="com.baptabl.reutc.MainActivity" >
 	-->
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#4ea28e"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="ReuniUTC"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/erreurs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Application UTCéenne de prise de rendez-vous"
+        android:textSize="20sp"
+
+        />
 
     <Button
         android:id="@+id/buttCreerGroupe"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-
         android:text="@string/CreerGroupe"
         android:textColor="#275d90"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="2dp"
+        />
 
     <Button
         android:id="@+id/buttCreerReu"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/CreerReu"
         android:textColor="#275d90"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="2dp"
+        />
 
     <Button
         android:id="@+id/buttVoirEDT"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-
         android:text="@string/VoirEDT"
         android:textColor="#275d90"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="2dp" />
+
 
     <Button
         android:id="@+id/buttLogout"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-
         android:text="@string/logOut"
         android:textColor="#275d90"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="2dp" />
 
-        <TextView
-            android:id="@+id/erreurs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/description"
 
-            android:textSize="15sp"
 
-            />
 
 </LinearLayout>
+
 
     <!--  CHOIX DES CRÉNEAUX
     <RadioGroup
@@ -97,4 +118,5 @@
             android:layout_height="wrap_content" />
     </RadioGroup>
      -->
+
 
