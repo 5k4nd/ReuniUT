@@ -103,7 +103,6 @@ public class CAS {
 
     }
 
-
     public String getTicket() {
         return "null";
     }
