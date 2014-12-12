@@ -41,7 +41,9 @@
             android:layout_margin="5dp"
             android:text="ReuniUTC"
             android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+
+            />
 
     </RelativeLayout>
 
