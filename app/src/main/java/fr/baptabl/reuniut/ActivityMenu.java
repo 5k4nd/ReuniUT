@@ -11,7 +11,7 @@ import android.widget.TextView;
  * Created by bat on 10/12/14.
  */
 // ceci est un TEST
-public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListener {
+public class ActivityMenu extends ActionBarActivity implements View.OnClickListener {
     private TextView erreurs = null ;
     private Button buttCreerGroupe = null;
     private Button buttCreerReu = null;
@@ -35,8 +35,8 @@ public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListen
         buttLogout = (Button) findViewById(R.id.buttLogout);
         buttLogout.setOnClickListener(this);
 
-        //on récupère l'extra passé par ReuniUTActivity
-        //boolean connectionReussie = i.getIntExtra(ReuniUTActivity.connectionReussie, 0);
+        //on récupère l'extra passé par ActivityLogin
+        //boolean connectionReussie = i.getIntExtra(ActivityLogin.connectionReussie, 0);
 
 
     }
@@ -47,11 +47,16 @@ public class ReuniUTMenu extends ActionBarActivity implements View.OnClickListen
         //Button buttLogout = (Button) v;
         switch(v.getId()){
             case R.id.buttLogout:
+
+
+
+
+
                 erreurs.setText("je me déco!");
             break;
 
             case R.id.buttCreerGroupe:
-                //blop
+                //créer groupe
             break;
 
             case R.id.buttCreerReu:
