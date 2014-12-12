@@ -3,8 +3,6 @@ package fr.baptabl.reuniut;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,20 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ActivityLogin extends ActionBarActivity implements View.OnClickListener/*, ImageGetter*/ {
-//login
+public class ActivityLogin extends ActionBarActivity implements View.OnClickListener /*, ImageGetter*/ {
+
     private String login;
     private String password;
 
-    //surcharge (overloading)
-    public String getTicket(){ return "null"; }
-    public String getTicket(String login, String password) {
-        String ticket = "null";
-
-        ticket = "1195648";
-
-        return ticket;
-    }
 
     /*
         @Override
@@ -48,7 +37,7 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_reuni_ut);
+        setContentView(R.layout.activity_login);
 
         fieldLogin = (EditText) findViewById(R.id.fieldLogin);
         fieldPasswd = (EditText) findViewById(R.id.fieldPasswd);
@@ -82,23 +71,28 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
         toast.show();
 
     //CAS
-        Boolean connectionReussie = true;
+        //Boolean connectionReussie = true;
         login = fieldLogin.getText().toString();
         password = fieldPasswd.getText().toString();
 
-        String ticket = getTicket(login, password);
+        CAS Cas = new CAS(login, password);
 
-
-
-
-        if (ticket=="null") {
+        //String ticket = Cas.getTicket(login, password);
+        String ticket = null;
+        try {
+            ticket = Cas.postData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (Cas.EstIdentifie == false) {
             b.setText("Se connecter");
             ThrowConnect.setText("Connexion impossible");
         }
         else {
+            b.setText("Connecté");
             ThrowConnect.setText(ticket);
 
-            
+
             Intent newActivity = new Intent(ActivityLogin.this, ActivityMenu.class);
             // on rajoute un extra à passer à la nouvelle activité
             //newActivity.putExtra(AGE, 31);
@@ -121,7 +115,7 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
 	}
 	*/
 
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -143,6 +137,6 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
 
 }
