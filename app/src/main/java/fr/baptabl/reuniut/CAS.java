@@ -27,7 +27,7 @@ public class CAS {
     private CAS(String login, String password) {
         this.login = login;
         this.password = password;
-        this.EstIdentifie = false;
+        this.EstIdentifie = true;//le temps des tests
     }
 
     static public CAS getInstance(String login, String password) {

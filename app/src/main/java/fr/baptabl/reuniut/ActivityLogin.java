@@ -76,7 +76,7 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
         login = fieldLogin.getText().toString();
         password = fieldPasswd.getText().toString();
 
-        CAS Cas = new CAS(login, password);
+        CAS Cas = CAS.getInstance(login, password);
         //CAS Cas = CAS.getInstance(login, password);
 
         //String ticket = Cas.getTicket(login, password);

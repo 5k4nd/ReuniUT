@@ -1,7 +1,14 @@
 package fr.baptabl.reuniut;
+import java.util.Calendar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ListIterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 
 /**
  * Created by jean on 20/11/14.
@@ -12,24 +19,41 @@ public class Reunion {
 	private Groupe optionnel;
 	private Date date_min;
 	private Date fin_max;
+	private long duree;
 	private String sujet;
 	private EnsCreneau creneaux_possibles;
 	private Creneau creneau_valide;
 	private boolean creneau_confirme;
 
 	//Constructor 
-	private Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet, EnsCreneau creneaux_possibles, Creneau creneau_valide, boolean creneau_confirme){
+	public Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet){
 		this.essentiel=essentiel;
 		this.optionnel=optionnel;
 		this.date_min=date_min;
 		this.fin_max=fin_max;
 		this.sujet=sujet;
-		this.creneaux_possibles=creneaux_possibles;
-		this.creneau_valide=creneau_valide;
-		this.creneau_confirme=creneau_confirme;
+
+	}
+	public Reunion(Date dmin, Date fmax, long d)//La duréee est à entrer en seconde
+	{
+		this.date_min = dmin;
+		this.fin_max=fmax;
+		this.duree=d;
 	}
 
 	//Getters and Setters
+	public Date getMin()
+	{
+		return date_min;
+	}
+	public Date getMax()
+	{
+		return fin_max;
+	}
+	public long getDuree()
+	{
+		return duree;
+	}
 	private void setEssentiel(Groupe groupe){
 		this.essentiel=groupe;
 	}
@@ -46,20 +70,76 @@ public class Reunion {
 		return true;
 	}
 
-    private EnsCreneau getLibre(EnsCreneau ens)
-    {
-        ListIterator<Creneau> i = ens.listIterator(0);
-        while (i.hasNext() && i.next().getDebut().getTime()<fin_max.getTime())
-        {
-            if (i.next().getFin().getTime() > date_min.getTime()) {
-                if (date_min.getTime() < i.next().getDebut().getTime()) {
+	static private Date ConversionDateEnHeure(Date date)//Fonction de "neutralisation" de la Date
+	{
+		Date heure;
+		try{
+			SimpleDateFormat df =new SimpleDateFormat("HH:mm");
+			String d = df.format(date);
+			heure = df.parse(d);
+			return heure;
+		}
+		catch (ParseException ex)
+		{
+			ex.printStackTrace();
+		}
+		return null;
 
-                }
-            }
-        }
+	}
+	static public Date min(Date d1, Date d2)
+	{
+		if(d2.getTime()<d1.getTime())
+			return d2;
+		else
+			return d1;
+	}
+	public EnsCreneau getLibre(EnsCreneau ens)
+	{
+		Date d= this.ConversionDateEnHeure(date_min);
+		Date f= this.ConversionDateEnHeure(fin_max);
+		Date e;
+		ListIterator<Creneau> i = ens.listIterator(0);
+		while (i.hasNext() && ens.get(i.nextIndex()).getFin().getTime()<d.getTime())
+			/*Tant que les créneaux se finnissent avant que la plage ne commence*/
+		{
+			i.next();
+			i.remove();//On supprime l'élèment
+		}
+		while (i.hasNext() && ens.get(i.nextIndex()).getDebut().getTime()<f.getTime())
+			/*Tant que  les créneaux commencent avant la fin*/
+		{
+			if(ens.get(i.nextIndex()).getDebut().getTime()-d.getTime()>duree)
+				/*Si la différence entre le début du créneau suivant et le début de la plage horraire restante est suffisament grand*/
+			{
+				
+				ens.get(i.nextIndex());
+				e=d;
+				d=ens.get(i.nextIndex()).getFin();//Le début de la plage horraire prend comme valeur la fin du créneau
+				Date m=min(ens.get(i.nextIndex()).getDebut(),f);
+				ens.get(i.nextIndex()).setFin(min(ens.get(i.nextIndex()).getDebut(),f));//La fin du créneau prend comme valeur le min entre le début du creneau et la fin
+				ens.get(i.nextIndex());
+				ens.get(i.nextIndex()).setDebut(e);//Le début du créneau prend comme valeur le début de la plage horraire
+				i.next();
+			}
+			else
+			{
+				d=ens.get(i.nextIndex()).getFin();
+				i.next();
+				i.remove();//On avance et supprime
 
+			}
+		}
+		while(i.hasNext())//On supprime ce qui reste
+		{
+			i.next();
+			i.remove();
+		}
+		if(f.getTime()-d.getTime()>=duree)
+		{
+			ens.addLast(new Creneau(d, f));
+		}
 
-        return null;
+		return ens;
 
 	}
 

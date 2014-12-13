@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Collections;
+import java.util.Iterator;
 /**
  * Created by Quentin on 10/12/14.
  */
@@ -42,6 +43,10 @@ public class Emploi {
 	}
     public EnsCreneau getJournee(int n){
         return journee[n];
+    }
+    public void printJournee(int n)
+    {
+    	journee[n].printEnsCreneau();
     }
 
 }
