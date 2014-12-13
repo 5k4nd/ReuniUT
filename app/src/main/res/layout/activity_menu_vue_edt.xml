@@ -5,27 +5,13 @@
 <!-- un VieGroup peut contenir un View -->
 <!-- donc TOUT peut s'imbriquer -->
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     >
-
-    <!-- TAILLES
-    match (fill avant la V8): autant de place que le parent
-    wrap: le moins de place possible
-    dp: sorte de pourcentage de pixels, relatif à l'écran donc "universel" ;-)
-    -->
-
-    <!--
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.baptabl.reutc.MainActivity" >
-	-->
 
     <RelativeLayout
         android:id="@+id/header"
@@ -47,60 +33,30 @@
 
     </RelativeLayout>
 
+
     <TextView
-        android:id="@+id/fieldDescription"
+        android:id="@+id/vueEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/description"
+        android:layout_below="@id/header"
+        android:text="@string/defaut"
         android:textSize="20sp"
-
         />
 
     <Button
-        android:id="@+id/buttCreerGroupe"
+        android:id="@+id/buttRetour"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/CreerGroupe"
+        android:text="@string/retour"
         android:textColor="#275d90"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="2dp"
         />
 
-    <Button
-        android:id="@+id/buttCreerReu"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/CreerReu"
-        android:textColor="#275d90"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="2dp"
-        />
-
-    <Button
-        android:id="@+id/buttVoirEDT"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/VoirEDT"
-        android:textColor="#275d90"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="2dp" />
-
-
-    <Button
-        android:id="@+id/buttLogout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/logOut"
-        android:textColor="#275d90"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="2dp" />
 
 
 
-
-</LinearLayout>
+</RelativeLayout>
 
 
     <!--  CHOIX DES CRÉNEAUX

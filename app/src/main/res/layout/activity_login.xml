@@ -13,6 +13,7 @@
     android:orientation="vertical"
     >
 
+
     <!-- TAILLES
     match (fill avant la V8): autant de place que le parent
     wrap: le moins de place possible
@@ -114,7 +115,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/app_name"
         android:textSize="15sp"
         />
 

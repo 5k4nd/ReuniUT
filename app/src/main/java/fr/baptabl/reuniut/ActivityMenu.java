@@ -1,18 +1,16 @@
 package fr.baptabl.reuniut;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 /**
  * Created by bat on 10/12/14.
  */
-// ceci est un TEST
-public class ActivityMenu extends ActionBarActivity implements View.OnClickListener {
-    private TextView erreurs = null ;
+
+public class ActivityMenu extends Activity implements View.OnClickListener {
     private Button buttCreerGroupe = null;
     private Button buttCreerReu = null;
     private Button buttVoirEDT = null;
@@ -22,10 +20,10 @@ public class ActivityMenu extends ActionBarActivity implements View.OnClickListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent(); //on récupère le parent
+        //EDT = i.getStringExtra("EDT");
 
         setContentView(R.layout.activity_menu);
 
-        erreurs = (TextView) findViewById(R.id.erreurs);
         buttCreerGroupe = (Button) findViewById(R.id.buttCreerGroupe);
         buttCreerGroupe.setOnClickListener(this);
         buttCreerReu = (Button) findViewById(R.id.buttCreerReu);
@@ -38,21 +36,14 @@ public class ActivityMenu extends ActionBarActivity implements View.OnClickListe
         //on récupère l'extra passé par ActivityLogin
         //boolean connectionReussie = i.getIntExtra(ActivityLogin.connectionReussie, 0);
 
-
     }
 
     @Override
     public void onClick(View v) {
-        erreurs = (TextView) findViewById(R.id.erreurs);
         //Button buttLogout = (Button) v;
         switch(v.getId()){
             case R.id.buttLogout:
-
-
-
-
-
-                erreurs.setText("Vous vous déconnectez ! bien ouej!");
+                this.finish();
             break;
 
             case R.id.buttCreerGroupe:
@@ -64,7 +55,8 @@ public class ActivityMenu extends ActionBarActivity implements View.OnClickListe
             break;
 
             case R.id.buttVoirEDT:
-                //blop
+                Intent newActivity = new Intent(ActivityMenu.this, ActivityMenuVueEdt.class);
+                startActivity(newActivity);
             break;
 
         }

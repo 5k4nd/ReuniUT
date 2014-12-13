@@ -1,5 +1,6 @@
 package fr.baptabl.reuniut;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -12,9 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivityLogin extends ActionBarActivity implements View.OnClickListener /*, ImageGetter*/ {
-    public boolean EstIdentifie;
+    public boolean isConnected;
+    public String tempTicket;
     private String login;
     private String password;
+    static Context contextLayout;
 
 
     /*
@@ -37,7 +40,7 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        contextLayout = this.getBaseContext();
         setContentView(R.layout.activity_login);
 
         fieldLogin = (EditText) findViewById(R.id.fieldLogin);
@@ -76,29 +79,27 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
         login = fieldLogin.getText().toString();
         password = fieldPasswd.getText().toString();
 
-        CAS Cas = CAS.getInstance(login, password);
-        //CAS Cas = CAS.getInstance(login, password);
-
         //String ticket = Cas.getTicket(login, password);
+        /*
         String ticket = null;
         try {
             ticket = Cas.getData();
         } catch (Exception e) {
             Log.e("Cas.postData()", "I got an error", e);
         }
-        if (Cas.EstIdentifie == false) {
+        */
+        login curLogin = new login(this.getBaseContext());// ou contextLayout ?
+        if (curLogin.isConnected == false) {
             b.setText("Se connecter");
             ThrowConnect.setText("Connexion impossible");
         }
         else {
             Log.v("ELSE", "on a atteint le else");
             b.setText("Connecté");
-            ThrowConnect.setText(ticket);
-
+            //ThrowConnect.setText(ticket);
 
             Intent newActivity = new Intent(ActivityLogin.this, ActivityMenu.class);
-            // on rajoute un extra à passer à la nouvelle activité
-            //newActivity.putExtra(AGE, 31);
+            //newActivity.putExtra("EDT", EDT);
             startActivity(newActivity);
 
         }
