@@ -3,6 +3,7 @@ package fr.baptabl.reuniut;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivityLogin extends ActionBarActivity implements View.OnClickListener /*, ImageGetter*/ {
-
+    public boolean EstIdentifie;
     private String login;
     private String password;
 
@@ -76,19 +77,21 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
         password = fieldPasswd.getText().toString();
 
         CAS Cas = new CAS(login, password);
+        //CAS Cas = CAS.getInstance(login, password);
 
         //String ticket = Cas.getTicket(login, password);
         String ticket = null;
         try {
-            ticket = Cas.postData();
+            ticket = Cas.getData();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("Cas.postData()", "I got an error", e);
         }
         if (Cas.EstIdentifie == false) {
             b.setText("Se connecter");
             ThrowConnect.setText("Connexion impossible");
         }
         else {
+            Log.v("ELSE", "on a atteint le else");
             b.setText("Connecté");
             ThrowConnect.setText(ticket);
 

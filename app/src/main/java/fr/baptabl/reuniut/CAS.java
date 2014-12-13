@@ -3,87 +3,137 @@ package fr.baptabl.reuniut;
 import android.util.Log;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /**
  * Created by bat on 11/12/14.
  */
+/* À IMPLÉMENTER :
+- CAS doit être singleton
+- ...
+ */
 
-//DOIT ETRE SINGLETON
 public class CAS {
+    private static CAS Instance = null;
     public boolean EstIdentifie;
     private String login;
     private String password;
 
-    public CAS() {
-        this.EstIdentifie = false;
-        //gérer les erreurs !
-    }
-
-    public CAS(String login, String password) {
+    private CAS(String login, String password) {
         this.login = login;
         this.password = password;
-        this.EstIdentifie = true;//tant que le CAS n'est pas opérationnel
+        this.EstIdentifie = false;
     }
 
-    //HTTP-request
-    String postData() throws Exception {
-        String reponse = null;
-        try {
+    static public CAS getInstance(String login, String password) {
+        if (Instance==null) {
+            Instance = new CAS(login, password);
+        }
+        return Instance;
+    }
 
+
+    public String getTicket() {
+        return getTicket(this.login, this.password);
+    }
+
+    /*
+    public String getTicket(String login, String password) {
+        String getData() throws Exception {
+            String reponse = null;
+
+        //AUTH
+            String ticket = this.getTicket(this.login, this.password);
+
+            try {
             HttpClient myClient = new DefaultHttpClient();
             HttpPost myPost = new HttpPost("https://cas.utc.fr/cas/v1/tickets");
 
             //HttpResponse response = null;
             //String responseString = null;
 
-            //POST
-            List<NameValuePair> parametresPost = new ArrayList<NameValuePair>(2);
-            parametresPost.add(new BasicNameValuePair("username", "abelbapt"));
-            parametresPost.add(new BasicNameValuePair("password", "NKJfxm53"));
-            try {
-                myPost.setEntity(new UrlEncodedFormEntity(parametresPost));
-            } catch (UnsupportedEncodingException e) {
+        //POST
+            //List<NameValuePair> parametresPost = new ArrayList<NameValuePair>(2);
+            //parametresPost.add(new BasicNameValuePair("username", ""));
+            //parametresPost.add(new BasicNameValuePair("password", ""));
+            //try {
+            //    myPost.setEntity(new UrlEncodedFormEntity(parametresPost));
+            //} catch (UnsupportedEncodingException e) {
                 // writing error to Log
-                e.printStackTrace();
-            }
+            //Log.e("Encodage", "I got an error", e);
+            //}
 
-            // Execute HTTP Post Request
+        // Execute HTTP Post Request
             try {
                 HttpResponse rep = myClient.execute(myPost);
-
-                // writing response to log
-                Log.d("Http Response:", rep.toString());
                 //BufferedReader stringRep = new BufferedReader(new InputStreamReader(rep.getEntity().getContent()));
                 //reponse = stringRep.readLine();
-
-            } catch (ClientProtocolException e) {
-                // writing exception to log
-                e.printStackTrace();
-
-            } catch (IOException e) {
-                // writing exception to log
-                e.printStackTrace();
+            } catch (ClientProtocolException e) { Log.v("Requete HTTP", "Exception Protocole Client");
+            } catch (IOException e) { Log.v("Requete HTTP", "IOException...");
             }
-
-        } catch (Exception e) {
+            } catch (Exception e) {
+            Log.v("HTTP-request", "UNE ERREUR EST SURVENUE SUR L'ENSEMBLE");
         }
-        //Log.v("REQUETE ", reponse);
-        //reponse = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+            //reponse = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+            Log.v("REQUETE ", reponse);
+            return reponse;
+        }
+    }
+    */
+//À suppprimer, je garde pour les tests
+    public String getTicket(String login, String password) {
+        String ticket = "null";
+
+        //String barbareno = getData();
+        String barbareno = "123456";
+        barbareno = barbareno.substring(1, 5);
+        Log.v("HTTP", barbareno);
+
+        ticket = "login : " + login + "\net password : " + password;
+
+        if (ticket != "null")
+            this.EstIdentifie = true;//tant que le CAS n'est pas opérationnel // À IMPLÉMENTER
+        return ticket;
+
+    }
+
+    private String getEdt(String edt) {
+        if (this.EstIdentifie == false)
+            return "null";
+        else {
+            //return edt = getData().parserDeStringAimplementer;
+            return "null";
+
+        }
+    }
+
+//****************
+//    HTTP
+//****************
+    String getData() throws Exception {
+
+        HttpClient myClient = new DefaultHttpClient();
+        HttpPost myPost = new HttpPost("http://bat.demic.eu/cas/EDT/abelbapt.edt");
+
+        HttpResponse rep = myClient.execute(myPost);
+        BufferedReader stringRep = new BufferedReader(new InputStreamReader(rep.getEntity().getContent()));
+        String reponse = stringRep.readLine();
+        Log.v("REQUETE ", reponse);
         return reponse;
+    }
+}
 
 
+
+//***************
+//  BROUILLON
+//***************
 /*
             response = httpclient.execute(URL);
             //HttpResponse To String
@@ -101,36 +151,6 @@ public class CAS {
             return s;
 */
 
-    }
-
-    public String getTicket() {
-        return "null";
-    }
-
-    public String getTicket(String login, String password) {
-        String ticket = "null";
-
-        //String barbareno = postData();
-        String barbareno = "123456";
-        barbareno = barbareno.substring(1, 5);
-        Log.v("HTTP", barbareno);
-
-        ticket = "login : " + login + "et password : " + password;
-
-        return ticket;
-    }
-
-    private String getEdt(String edt) {
-        if (this.EstIdentifie == false)
-            return "null";
-        else {
-            return "null";
-
-
-
-        }
-    }
-}
 
 
 /*
