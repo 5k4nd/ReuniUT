@@ -22,19 +22,27 @@ import java.util.List;
 
 //DOIT ETRE SINGLETON
 public class CAS {
+    private static CAS Instance= null;
     public boolean EstIdentifie;
     private String login;
     private String password;
 
-    public CAS() {
+    private CAS() {
         this.EstIdentifie = false;
         //gérer les erreurs !
-    }
+    }//C'est quoi l'intêret de faire un constructeur sans paramètres?
 
-    public CAS(String login, String password) {
+    private CAS(String login, String password) {
         this.login = login;
         this.password = password;
         this.EstIdentifie = true;//tant que le CAS n'est pas opérationnel
+    }
+    static public CAS getInstance(String login, String password)
+    {
+        if (Instance==null) {
+            Instance = new CAS(login, password);
+        }
+        return Instance;
     }
 
     //HTTP-request
@@ -51,7 +59,7 @@ public class CAS {
             //POST
             List<NameValuePair> parametresPost = new ArrayList<NameValuePair>(2);
             parametresPost.add(new BasicNameValuePair("username", "abelbapt"));
-            parametresPost.add(new BasicNameValuePair("password", "NKJfxm53"));
+            parametresPost.add(new BasicNameValuePair("password", "*******"));
             try {
                 myPost.setEntity(new UrlEncodedFormEntity(parametresPost));
             } catch (UnsupportedEncodingException e) {
