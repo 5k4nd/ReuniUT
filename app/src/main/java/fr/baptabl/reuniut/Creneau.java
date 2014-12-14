@@ -40,6 +40,15 @@ public class Creneau implements java.lang.Comparable<Creneau>{
         this.debut=d;
         this.fin=f;
     }
+    public String montreCreneau()
+    {
+        String d;
+        String f;
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm");//On définit un format de date
+        d = df.format(debut);
+        f = df.format(fin);
+        return "Début à "+d+", et fin à "+f+"\n";
+    }
     public Creneau(String emploi)
     {
     	try

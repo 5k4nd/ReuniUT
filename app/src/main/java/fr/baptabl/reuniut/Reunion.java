@@ -177,24 +177,5 @@ public class Reunion {
 
 	}
 
-    /*public static void main(String[] args)
-    {
-    	String dd = "2008-01-01 08:00";  // Start date
-    	String df = "2008-01-03 20:00";
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    	try {
-			Date d = sdf.parse(dd);
-	    	Date f =sdf.parse(df);
-	    	long du = 3600000;
-	    	Reunion r =new Reunion(d,f,du);
-	    	r.getDefaut().printEnsCreneau();
-		} catch (ParseException e) {
-
-			e.printStackTrace();
-		}
-
-    	
-    	
-    }*/
 
 }

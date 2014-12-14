@@ -8,11 +8,15 @@ import java.util.LinkedList;
 
 public class EnsCreneau extends LinkedList<Creneau> {
 
-	public void printEnsCreneau()
+	public String montreEnsCreneau()
 	{
     	Iterator<Creneau> i= this.iterator();
+    	StringBuilder sb = new StringBuilder("");
+
     	while(i.hasNext())
-    		i.next().printCreneau();
+    	{
+    		sb.append(i.next().montreCreneau());
+    	}
+    	return sb.toString();
 	}
-	
 }
