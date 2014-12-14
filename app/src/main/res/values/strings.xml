@@ -17,6 +17,8 @@
     <string name="CreerReu">Créer une réunion</string>
     <string name="VoirEDT">Consulter votre EdT</string>
     <string name="retour">Fermer la page</string>
+    <string name="intitule">Intitulé de la réunion</string>
+    <string name="reunion_name">Nom de la réunion</string>
 
 
 </resources>

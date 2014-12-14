@@ -16,6 +16,8 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
     private Button buttVoirEDT = null;
     private Button buttLogout = null;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
