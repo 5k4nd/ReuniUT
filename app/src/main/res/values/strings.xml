@@ -2,7 +2,7 @@
 <resources>
 
     <string name="defaut">Ceci est un texte par défaut</string>
-    <string name="app_name">RéuniUT</string>
+    <string name="app_name">RéuniUTC</string>
     <string name="action_settings">Settings</string>
     <string name="description">Application UTCéenne de prise de Rendez-vous.</string>
     <string name="login">Votre login UTC</string>
@@ -17,6 +17,19 @@
     <string name="CreerReu">Créer une réunion</string>
     <string name="VoirEDT">Consulter votre EdT</string>
     <string name="retour">Fermer la page</string>
+    <string name="intitule">Intitulé de la réunion</string>
+    <string name="reunion_name">Nom de la réunion</string>
+    <string name="descriptif_reunion">Ecrire le descriptif de la réunion</string>
+    <string name="descriptif_name">Descriptif de la réunion</string>
+    <string name="participant_reunion">Sélection des participants</string>
+    <string name="date_deb">Début (DD/MM/YYYY)</string>
+    <string name="date_fin">Fin (DD/MM/YYYY)</string>
+    <string name="Reunionchoix">Trouver un créneau</string>
 
+    <string-array name="group_arrays">
+        <item>Groupe 1</item>
+        <item>Groupe 2</item>
+        <item>Groupe 3</item>
+    </string-array>
 
 </resources>

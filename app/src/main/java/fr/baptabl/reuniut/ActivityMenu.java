@@ -16,6 +16,8 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
     private Button buttVoirEDT = null;
     private Button buttLogout = null;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,8 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
             break;
 
             case R.id.buttCreerReu:
-                //blop
+                Intent newActivity2 = new Intent(ActivityMenu.this, ActivityReunion.class);
+                startActivity(newActivity2);
             break;
 
             case R.id.buttVoirEDT:
