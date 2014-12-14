@@ -1,9 +1,23 @@
 package fr.baptabl.reuniut;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,7 +49,23 @@ public class Emploi {
 
 	}
 
-	public Emploi(String edt)
+    public Emploi(String login, String mdp)
+    {
+
+
+        //Tests de CAS à implémenter
+        new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/"+login+".edt");
+
+    }
+    public Emploi(String login, String Ulogin, String Umdp)//Constructeur pour les autres UTCeens
+    {
+
+
+        //Tests de CAS à implémenter
+        new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/"+login+".edt");
+
+    }
+	private EnsCreneau[] Construire_emploi(String edt)
 	{
 		journee=new EnsCreneau[7];
 		journee[0]=new EnsCreneau();//On initialise le dimanche vide
@@ -53,11 +83,53 @@ public class Emploi {
 			Collections.sort(journee[n]);//On trie la liste
 			n++;
 		}
+        return journee;
 	}
 	public EnsCreneau getJournee(int n){
 		return journee[n];
 	}
 
+    //Fonctions d'accès aux edts
+    public static String getHTTP(String url){
+        InputStream inputStream = null;
+        String result = "";
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
+            inputStream = httpResponse.getEntity().getContent();
 
+            if(inputStream != null)
+                result = convertInputStreamToString(inputStream);
+            else
+                result = "Contenu de requête NULL";
+
+        } catch (Exception e) {
+            Log.d("INPUTSTREAM", e.getLocalizedMessage());
+        }
+
+        return result;
+    }
+
+    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        String line = "";
+        String result = "";
+        while((line = bufferedReader.readLine()) != null)
+            result += line;
+
+        inputStream.close();
+        return result;
+    }
+
+    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return getHTTP(urls[0]);
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            journee=Construire_emploi(result);//On construit l'emploi du temps ici
+        }
+    }
 
 }
