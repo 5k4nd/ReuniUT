@@ -1,26 +1,28 @@
 package fr.baptabl.reuniut;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import fr.baptabl.reuniut.ActivityMenu;
-import fr.baptabl.reuniut.R;
 
 /**
  * Created by quentinkeunebroek on 12/12/14.
  */
-public abstract class ActivityReunion extends ActionBarActivity implements View.OnClickListener {
-    private EditText fieldIntitule = null;
+public class ActivityReunion extends Activity implements View.OnClickListener {
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Intent i = getIntent();
 
-
+        setContentView(R.layout.activity_reunion);
     }
+    @Override
+    public void onClick(View v) { this.finish(); }
 
 
 }
