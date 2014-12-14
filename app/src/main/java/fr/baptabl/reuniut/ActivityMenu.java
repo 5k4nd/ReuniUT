@@ -53,8 +53,8 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
             break;
 
             case R.id.buttCreerReu:
-                ntent newActivity = new Intent(ActivityMenu.this, ActivityReunion.class);
-                startActivity(newActivity);
+                Intent newActivity2 = new Intent(ActivityMenu.this, ActivityReunion.class);
+                startActivity(newActivity2);
             break;
 
             case R.id.buttVoirEDT:
