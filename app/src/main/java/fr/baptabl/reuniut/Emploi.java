@@ -31,9 +31,6 @@ import java.util.Iterator;
 public class Emploi {
 	private EnsCreneau[] journee;
 
-	private Emploi(EnsCreneau journee[]){
-		this.journee=journee;
-	}
 
 	public String montreEmploi()
 	{
@@ -41,7 +38,7 @@ public class Emploi {
 		int i;
 		StringBuilder sb = new StringBuilder("");
 		String[] jour = new String[] {"DIMANCHE", "LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI" };
-		for(i=1; i< journee.length; i++)
+		for(i=1; i< this.journee.length; i++)
 		{
 			sb.append(jour[i]+" : \n"+journee[i].montreEnsCreneau());
 		}
@@ -65,29 +62,32 @@ public class Emploi {
         new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/"+login+".edt");
 
     }
-	private EnsCreneau[] Construire_emploi(String edt)
+	private void Construire_emploi(String edt)
 	{
-		journee=new EnsCreneau[7];
-		journee[0]=new EnsCreneau();//On initialise le dimanche vide
+        journee = new EnsCreneau[7];
+		this.journee[0]=new EnsCreneau();//On initialise le dimanche vide
 		int n=1;
 		String[] jour = new String[] {"LUNDI...", "MARDI...", "MERCREDI", "JEUDI...", "VENDREDI", "SAMEDI.." };
 		for(String j : jour)
 		{
-			journee[n]=new EnsCreneau();
+			this.journee[n]=new EnsCreneau();
 			Pattern pattern = Pattern.compile("("+j+"){1}[A-Z0-9-:,= ]{24}");
 			Matcher match = pattern.matcher(edt);//On parse le string avec la Regex
 			while(match.find()){
-				journee[n].add(new Creneau(match.group()));//On ajoute un creneau à la liste du jour
+				this.journee[n].add(new Creneau(match.group()));//On ajoute un creneau à la liste du jour
 				//System.out.println(match.group());//On teste
 			}
-			Collections.sort(journee[n]);//On trie la liste
+            int k= this.journee.length;
+			Collections.sort(this.journee[n]);//On trie la liste
 			n++;
 		}
-        return journee;
 	}
 	public EnsCreneau getJournee(int n){
 		return journee[n];
 	}
+    public EnsCreneau[] getJournee(){
+        return journee;
+    }
 
     //Fonctions d'accès aux edts
     public static String getHTTP(String url){
@@ -128,7 +128,7 @@ public class Emploi {
         }
         @Override
         protected void onPostExecute(String result) {
-            journee=Construire_emploi(result);//On construit l'emploi du temps ici
+            Construire_emploi(result);//On construit l'emploi du temps ici
         }
     }
 

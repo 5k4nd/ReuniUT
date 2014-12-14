@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 public class ActivityLogin extends ActionBarActivity implements View.OnClickListener /*, ImageGetter*/ {
     public boolean isConnected;
     public String tempTicket;
@@ -45,26 +46,34 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
     //redéfinition de onClick => CONNECTION
     @Override
     public void onClick(View v) {
-        TextView ThrowConnect = (TextView) findViewById(R.id.ThrowConnect);
-        Button b = (Button) v;
-        b.setText("Connexion en cours...");
+        int usersize = fieldLogin.getText().length();
+
+        int passsize = fieldPasswd.getText().length();
+        // si les deux champs sont remplis
+        if (usersize > 0 && passsize > 0) {
+
+            TextView ThrowConnect = (TextView) findViewById(R.id.ThrowConnect);
+            Button b = (Button) v;
+            b.setText("Connexion en cours...");
 //keepLogin
-        CharSequence strKeeplog = null;
-        if (keepLogin.isChecked()) {
-            strKeeplog = "login enregistré";
+            CharSequence strKeeplog = null;
+            if (keepLogin.isChecked()) {
+                strKeeplog = "login enregistré";
 // setString(R.string.login=login); // att., impossible de mod. le strings.xml dynamiquement !
-        }
-        else {
-            strKeeplog = "login non enregistré";
+            } else {
+                strKeeplog = "login non enregistré";
 // setString(R.string.login="login");
-        }
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(this,strKeeplog, duration);
-        toast.show();
+            }
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(this, strKeeplog, duration);
+            toast.show();
 //CAS
 //Boolean connectionReussie = true;
-        login = fieldLogin.getText().toString();
-        password = fieldPasswd.getText().toString();
+
+            login = fieldLogin.getText().toString();
+            password = fieldPasswd.getText().toString();
+
+
 //String ticket = Cas.getTicket(login, password);
 /*
 String ticket = null;
@@ -74,19 +83,30 @@ ticket = Cas.getData();
 Log.e("Cas.postData()", "I got an error", e);
 }
 */
-        login curLogin = fr.baptabl.reuniut.login.getInstance("courbeje", "***");// On cree l'utilisateur
-        if (curLogin == null || curLogin.getEmploi() == null)//Si le constructeur a renvoyé une erreur
-        {
-            b.setText("Se connecter");
-            ThrowConnect.setText("Connexion impossible");
-        }
-        else {
-            Log.v("ELSE", "on a atteint le else");
-            b.setText("Connecté");
+
+            login curLogin = fr.baptabl.reuniut.login.getInstance(login, password);// On cree l'utilisateur
+
+
+            if (curLogin == null /* a décomenter lorsque on aura réussi à faire attendre la requête  || curLogin.getEmploi() == null || curLogin.getEmploi().montreEmploi() == null*/)//Si le constructeur a renvoyé une erreur
+            {
+                curLogin = null;
+                b.setText("Se connecter");
+                ThrowConnect.setText("Connexion impossible");
+            } else {
+                Log.v("ELSE", "on a atteint le else");
+                b.setText("Connecté");
 //ThrowConnect.setText(ticket);
-            Intent newActivity = new Intent(ActivityLogin.this, ActivityMenu.class);
+                Intent newActivity = new Intent(ActivityLogin.this, ActivityMenu.class);
 //newActivity.putExtra("EDT", EDT);
-            startActivity(newActivity);
+                startActivity(newActivity);
+            }
+        }
+        else
+        {
+            AlertDialog ad = new AlertDialog.Builder(this)
+                    .setPositiveButton("Ok", null).setTitle("Erreur").setMessage("Merci d'entrer vos login et mot de pase !")
+                    .create();
+            ad.show();
         }
     }
 /*
