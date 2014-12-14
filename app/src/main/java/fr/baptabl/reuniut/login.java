@@ -32,7 +32,7 @@ public class login {
 
 //en chantier
 //Constructeur
-    public login(Context c) { //ATTENTION, on récupère le contexte d'ActivityLogin
+    private login(Context c) { //ATTENTION, on récupère le contexte d'ActivityLogin
         curContext = c;
         isConnected = true;//TEMPORAIRE POUR LES TESTS tant que le CAS n'est pas opérationnel
         if (isConnected == true) {

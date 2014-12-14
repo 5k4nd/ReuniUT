@@ -88,7 +88,7 @@ public class ActivityLogin extends ActionBarActivity implements View.OnClickList
             Log.e("Cas.postData()", "I got an error", e);
         }
         */
-        login curLogin = new login(this.getBaseContext());// ou contextLayout ?
+        login curLogin = fr.baptabl.reuniut.login.getInstance(this.getBaseContext());// ou contextLayout ?
         if (curLogin.isConnected == false) {
             b.setText("Se connecter");
             ThrowConnect.setText("Connexion impossible");
