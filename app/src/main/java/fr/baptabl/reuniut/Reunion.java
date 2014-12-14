@@ -1,12 +1,14 @@
 package fr.baptabl.reuniut;
 import java.util.Calendar;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+
+
 
 
 
@@ -93,6 +95,38 @@ public class Reunion {
 		else
 			return d1;
 	}
+	@SuppressWarnings("deprecation")
+	private EnsCreneau getDefaut()
+	{
+		//tambouille à la con pour avoir des dates qui correspondent aux heures des limites
+		Date d=date_min;
+		Date f=fin_max;
+		Calendar c= Calendar.getInstance();
+		Calendar c1=Calendar.getInstance();
+		c1.setTime(f);
+		c.setTime(d);
+		c.set(Calendar.HOUR_OF_DAY, c1.get(Calendar.HOUR_OF_DAY));
+		c.set(Calendar.MINUTE, c1.get(Calendar.MINUTE));
+		f=c.getTime();
+		
+		
+		EnsCreneau e =new EnsCreneau();
+		while(d.getTime()< fin_max.getTime())
+		{
+			
+			
+			e.add(new Creneau(d,f));
+			//Incrementation des dates
+			c.setTime(d);
+			c.add(Calendar.DATE, 1);
+			d= c.getTime();
+			c.setTime(f);
+			c.add(Calendar.DATE, 1);
+			f=c.getTime();
+		}
+		return e;
+		
+	}
 	public EnsCreneau getLibre(EnsCreneau ens)
 	{
 		Date d= this.ConversionDateEnHeure(date_min);
@@ -143,6 +177,24 @@ public class Reunion {
 
 	}
 
+    /*public static void main(String[] args)
+    {
+    	String dd = "2008-01-01 08:00";  // Start date
+    	String df = "2008-01-03 20:00";
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    	try {
+			Date d = sdf.parse(dd);
+	    	Date f =sdf.parse(df);
+	    	long du = 3600000;
+	    	Reunion r =new Reunion(d,f,du);
+	    	r.getDefaut().printEnsCreneau();
+		} catch (ParseException e) {
 
+			e.printStackTrace();
+		}
+
+    	
+    	
+    }*/
 
 }

@@ -26,7 +26,8 @@ public class Emploi {
 	public Emploi(String edt)
 	{
 			journee=new EnsCreneau[7];
-			int n=0;
+			journee[0]=new EnsCreneau();//On initialise le dimanche vide
+			int n=1;
 			String[] jour = new String[] {"LUNDI...", "MARDI...", "MERCREDI", "JEUDI...", "VENDREDI", "SAMEDI.." };
 			for(String j : jour)
 			{
@@ -48,5 +49,6 @@ public class Emploi {
     {
     	journee[n].printEnsCreneau();
     }
+
 
 }
