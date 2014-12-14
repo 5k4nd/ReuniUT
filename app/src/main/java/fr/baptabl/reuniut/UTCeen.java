@@ -17,6 +17,11 @@ public class UTCeen{
         this.login=login;
         this.emploi = new Emploi(edt);
     }
+    public UTCeen(String login, String edt){
+        //Verification de l'existence, récupération de l'emploi du temps
+        this.login=login;
+        this.emploi = new Emploi(edt);
+    }
 
     //Getters & Setters
     public String getNom(){
