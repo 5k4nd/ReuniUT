@@ -97,14 +97,14 @@
 
     <TableLayout
         android:id="@+id/tabledate"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         >
 
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal">
 
             <EditText
@@ -134,13 +134,14 @@
 
     <Button
         android:id="@+id/buttReunion"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:text="@string/Reunionchoix"
         android:textColor="#275d90"
-        android:layout_centerHorizontal="true"
         />
 
 </LinearLayout>
