@@ -23,7 +23,11 @@ public class UTCeen{
         this.login=login;
         this.emploi = new Emploi(login, mdp);
     }
-
+    public String montreUTCeen()
+    {
+    	String u = prenom+" "+nom;
+    	return u;
+    }
     //Getters & Setters
     public String getNom(){
         return nom;

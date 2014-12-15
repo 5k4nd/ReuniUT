@@ -1,10 +1,18 @@
 package fr.baptabl.reuniut;
 
-import android.net.ConnectivityManager;
+/*import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;*/
+
+import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -49,9 +57,9 @@ public class Emploi {
     public Emploi(String login, String mdp)
     {
 
-
         //Tests de CAS à implémenter
-        new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/"+login+".edt");
+        new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/courbeje.edt");
+        Log.v("HTTP REQUEST", "atteint");
 
     }
     public Emploi(String login, String Ulogin, String Umdp)//Constructeur pour les autres UTCeens
@@ -61,9 +69,11 @@ public class Emploi {
         //Tests de CAS à implémenter
         new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/"+login+".edt");
 
+
     }
 	private void Construire_emploi(String edt)
 	{
+        Log.v("CONSTRUIRE", "atteint");
         journee = new EnsCreneau[7];
 		this.journee[0]=new EnsCreneau();//On initialise le dimanche vide
 		int n=1;
@@ -104,7 +114,7 @@ public class Emploi {
                 result = "Contenu de requête NULL";
 
         } catch (Exception e) {
-            Log.d("INPUTSTREAM", e.getLocalizedMessage());
+           // Log.d("INPUTSTREAM", e.getLocalizedMessage());
         }
 
         return result;

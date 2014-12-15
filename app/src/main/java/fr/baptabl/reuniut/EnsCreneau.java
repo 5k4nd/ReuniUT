@@ -19,4 +19,12 @@ public class EnsCreneau extends LinkedList<Creneau> {
     	}
     	return sb.toString();
 	}
+	public EnsCreneau(EnsCreneau c)
+	{
+		super(c);
+	}
+	public EnsCreneau()
+	{
+		super();
+	}
 }

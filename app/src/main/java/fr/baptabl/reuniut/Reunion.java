@@ -3,6 +3,7 @@ import java.util.Calendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,16 +57,20 @@ public class Reunion {
 	{
 		return duree;
 	}
-	private void setEssentiel(Groupe groupe){
+	public Groupe getEssentiel()
+	{
+		return essentiel;
+	}
+	public void setEssentiel(Groupe groupe){
 		this.essentiel=groupe;
 	}
 
 	private void setOptionnel(Groupe groupe){
 		this.essentiel=groupe;
 	}
-
-	private EnsCreneau trouveCreneau(){
-		return null;
+	public EnsCreneau getPossibles()
+	{
+		return creneaux_possibles;
 	}
 
 	private boolean validerCreneau(){
@@ -108,13 +113,13 @@ public class Reunion {
 		c.set(Calendar.HOUR_OF_DAY, c1.get(Calendar.HOUR_OF_DAY));
 		c.set(Calendar.MINUTE, c1.get(Calendar.MINUTE));
 		f=c.getTime();
-		
-		
+
+
 		EnsCreneau e =new EnsCreneau();
 		while(d.getTime()< fin_max.getTime())
 		{
-			
-			
+
+
 			e.add(new Creneau(d,f));
 			//Incrementation des dates
 			c.setTime(d);
@@ -125,43 +130,38 @@ public class Reunion {
 			f=c.getTime();
 		}
 		return e;
-		
+
 	}
 	public EnsCreneau getLibre(EnsCreneau ens)
 	{
 		Date d= this.ConversionDateEnHeure(date_min);
 		Date f= this.ConversionDateEnHeure(fin_max);
 		Date e;
+		EnsCreneau c = new EnsCreneau();
 		ListIterator<Creneau> i = ens.listIterator(0);
-		while (i.hasNext() && ens.get(i.nextIndex()).getFin().getTime()<d.getTime())
+		while (i.hasNext() && ens.get(i.nextIndex()).getFin().getTime()<=d.getTime())
 			/*Tant que les créneaux se finnissent avant que la plage ne commence*/
 		{
-			i.next();
-			i.remove();//On supprime l'élèment
+			i.next();//On supprime l'élèment
 		}
 		while (i.hasNext() && ens.get(i.nextIndex()).getDebut().getTime()<f.getTime())
 			/*Tant que  les créneaux commencent avant la fin*/
 		{
-			if(ens.get(i.nextIndex()).getDebut().getTime()-d.getTime()>duree)
+			//System.out.println(ens.get(i.nextIndex()).montreCreneau());
+			if(ens.get(i.nextIndex()).getDebut().getTime()-d.getTime()>=duree)
 				/*Si la différence entre le début du créneau suivant et le début de la plage horraire restante est suffisament grand*/
 			{
+
 				
-				ens.get(i.nextIndex());
-				e=d;
-				d=ens.get(i.nextIndex()).getFin();//Le début de la plage horraire prend comme valeur la fin du créneau
-				Date m=min(ens.get(i.nextIndex()).getDebut(),f);
-				ens.get(i.nextIndex()).setFin(min(ens.get(i.nextIndex()).getDebut(),f));//La fin du créneau prend comme valeur le min entre le début du creneau et la fin
-				ens.get(i.nextIndex());
-				ens.get(i.nextIndex()).setDebut(e);//Le début du créneau prend comme valeur le début de la plage horraire
-				i.next();
-			}
-			else
-			{
-				d=ens.get(i.nextIndex()).getFin();
-				i.next();
-				i.remove();//On avance et supprime
+				//ens.get(i.nextIndex()).setFin(min(ens.get(i.nextIndex()).getDebut(),f));//La fin du créneau prend comme valeur le min entre le début du creneau et la fin
+				//ens.get(i.nextIndex());
+				//ens.get(i.nextIndex()).setDebut(e);//Le début du créneau prend comme valeur le début de la plage horraire
+				c.add(new Creneau(d, min(ens.get(i.nextIndex()).getDebut(),f)));
 
 			}
+
+			d=ens.get(i.nextIndex()).getFin();//Le début de la plage horraire prend comme valeur la fin du créneau
+			i.next();
 		}
 		while(i.hasNext())//On supprime ce qui reste
 		{
@@ -170,10 +170,85 @@ public class Reunion {
 		}
 		if(f.getTime()-d.getTime()>=duree)
 		{
-			ens.addLast(new Creneau(d, f));
+			c.addLast(new Creneau(d, f));
 		}
 
+		return c;
+
+	}
+	@SuppressWarnings("deprecation")
+	public EnsCreneau CreneauCommun(EnsCreneau ens, UTCeen U)
+	{
+		ListIterator<Creneau> i = ens.listIterator(0);
+		ListIterator<Creneau> u;
+		EnsCreneau e;
+		Calendar c= Calendar.getInstance();
+		Calendar c1= Calendar.getInstance();
+		Date d, f;
+		Creneau Cr;
+		while(i.hasNext())//On parcourt les créneaux possibles
+		{
+
+
+			e= getLibre(U.getEmploi().getJournee(ens.get(i.nextIndex()).getJour()-1)); //Les espaces libres de la journée de l'UTCeen
+			u=e.listIterator();
+			while(u.hasNext() && ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime()<ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime())
+				//Tant que la fin de l'espace est inférieure au début du créneau
+			{
+				u.next();//On parcourt
+
+			}
+			
+			while(u.hasNext() && ConversionDateEnHeure(ens.get(i.nextIndex()).getFin()).getTime()-ConversionDateEnHeure(e.get(u.nextIndex()).getDebut()).getTime()>=this.duree)
+				//Tant que le début la fin du créneau moins la fin de l'espace est supérieur à la durée
+			{
+				//On insère un créneau ayant pour début le max entre les deux débuts et pour fin le min entre les deux fins
+				d=ens.get(i.nextIndex()).getDebut();
+				if(ConversionDateEnHeure(e.get(u.nextIndex()).getDebut()).getTime() > ConversionDateEnHeure(d).getTime())
+				{
+					c.setTime(d);
+					c1.setTime(e.get(u.nextIndex()).getDebut());
+					c.set(Calendar.HOUR_OF_DAY, c1.get(Calendar.HOUR_OF_DAY));
+					c.set(Calendar.MINUTE, c1.get(Calendar.MINUTE));
+					d=c.getTime();
+				}
+				f=ens.get(i.nextIndex()).getFin();
+				if(ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime()<ConversionDateEnHeure(f).getTime())
+				{
+					c.setTime(f);
+					c1.setTime(e.get(u.nextIndex()).getFin());
+					c.set(Calendar.HOUR_OF_DAY, c1.get(Calendar.HOUR_OF_DAY));
+					c.set(Calendar.MINUTE, c1.get(Calendar.MINUTE));
+					f=c.getTime();
+				}
+				Cr=new Creneau(d,f);
+				
+				i.add(Cr);
+				u.next();
+			}
+			//On supprime le créneau originel
+			i.next();
+			i.remove();
+			
+
+		}
 		return ens;
+	}
+	public void creneauxEssentiels(EnsCreneau ens)
+	{
+		Iterator<UTCeen> i= this.essentiel.iterator();
+
+		while(i.hasNext())//Pour tous les UTCeens du groupe essentiel
+		{
+			CreneauCommun(ens, i.next());
+		}
+
+	}
+	public void setPossible()
+	{
+		EnsCreneau e= getDefaut();
+		creneauxEssentiels(e);
+		creneaux_possibles =e;
 
 	}
 

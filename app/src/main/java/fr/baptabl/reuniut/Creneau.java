@@ -3,6 +3,7 @@ package fr.baptabl.reuniut;
 //import java.util;
 
 
+import java.util.Calendar;
 import java.util.Date;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -35,7 +36,12 @@ public class Creneau implements java.lang.Comparable<Creneau>{
 		this.fin=f;
 		this.lieu=l;
 	}
-
+	public int getJour()
+	{
+		Calendar c= Calendar.getInstance();
+		c.setTime(debut);
+		return c.get(Calendar.DAY_OF_WEEK);
+	}
     public Creneau(Date d, Date f){
         this.debut=d;
         this.fin=f;
@@ -44,7 +50,7 @@ public class Creneau implements java.lang.Comparable<Creneau>{
     {
         String d;
         String f;
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm");//On définit un format de date
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM HH:mm");//On définit un format de date
         d = df.format(debut);
         f = df.format(fin);
         return "Début à "+d+", et fin à "+f+"\n";
