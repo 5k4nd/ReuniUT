@@ -104,7 +104,7 @@ Log.e("Cas.postData()", "I got an error", e);
         else
         {
             AlertDialog ad = new AlertDialog.Builder(this)
-                    .setPositiveButton("Ok", null).setTitle("Erreur").setMessage("Merci d'entrer vos login et mot de pase !")
+                    .setPositiveButton("Ok", null).setTitle("Erreur").setMessage("Merci d'entrer vos login et mot de passe !")
                     .create();
             ad.show();
         }

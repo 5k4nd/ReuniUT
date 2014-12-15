@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by bat on 13/12/14.
  */
 
-//implémenter le parseur (c'est pas pas pensable de laisser l'affichage comme ça, oh !)
+//améliorer l'affichage...
 
 public class ActivityMenuVueEdt extends Activity implements View.OnClickListener {
     private TextView vueEdt = null ;
