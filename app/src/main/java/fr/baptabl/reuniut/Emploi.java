@@ -1,15 +1,5 @@
 package fr.baptabl.reuniut;
 
-/*import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;*/
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -19,18 +9,13 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Collections;
-import java.util.Iterator;
 /**
  * Created by Quentin on 10/12/14.
  */
