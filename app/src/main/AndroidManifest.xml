@@ -29,6 +29,11 @@
             android:name=".ActivityMenuVueEdt"
             >
         </activity>
+        
+        <activity
+            android:name=".ActivityReunion"
+            >
+        </activity>
 
 
     </application>
