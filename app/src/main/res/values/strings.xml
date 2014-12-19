@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="description">Application UTCéenne de prise de Rendez-vous.</string>
     <string name="login">Votre login UTC</string>
-    <string name="memoriser">mémoriser le login pour les prochaines fois ?</string>
+    <string name="memoriser">mémoriser mes identifiants</string>
     <string name="password">Mot de passe</string>
     <string name="logingIn">Se connecter</string>
     <string name="logout">Se déconnecter</string>

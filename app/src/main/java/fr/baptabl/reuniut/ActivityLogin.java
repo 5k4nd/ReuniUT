@@ -1,6 +1,9 @@
 package fr.baptabl.reuniut;
+
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -10,68 +13,75 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.AlertDialog;
+
 public class ActivityLogin extends ActionBarActivity implements View.OnClickListener /*, ImageGetter*/ {
-    public boolean isConnected;
-    public String tempTicket;
+    //public boolean isConnected; inutilisée ?
+    //public String tempTicket; inutilisée ?
     private String login;
-    private String password;
-    static Context contextLayout;
-    /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_login);
-    }
-    */
-//Interface
-//RelativeLayout layout = null;
+    private String password; //moyen de sécuriser ? autre que du simple String ?
+    static Context contextLayout; //quelle utilisation ? en l'état, c'est sale...
+
+    //RelativeLayout layout = null;
     private TextView logoUTC = null;
     private EditText fieldLogin = null;
     private EditText fieldPasswd = null;
     private CheckBox keepLogin = null;
-    private Button buttLogin = null; //= new Button (this, R.style.rect_field);
+    private Button buttLogin = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contextLayout = this.getBaseContext();
         setContentView(R.layout.activity_login);
+
+    //récupération des identifiants
+        SharedPreferences keptLog = getSharedPreferences("myLog", 0);
+        String login = keptLog.getString("login", "");
+        String password = keptLog.getString("pwd", "");
+
         fieldLogin = (EditText) findViewById(R.id.fieldLogin);
+        fieldLogin.setText(login);
         fieldPasswd = (EditText) findViewById(R.id.fieldPasswd);
+        fieldPasswd.setText(password);
         keepLogin = (CheckBox) findViewById(R.id.keepLogin);
+
 //keepLogin.setOnClickListener(checkedListener);
         buttLogin = (Button) findViewById(R.id.buttLogin);
         buttLogin.setOnClickListener(this);
     }
-    //redéfinition de onClick => CONNECTION
-    @Override
-    public void onClick(View v) {
-        int usersize = fieldLogin.getText().length();
 
-        int passsize = fieldPasswd.getText().length();
-        // si les deux champs sont remplis
-        if (usersize > 0 && passsize > 0) {
+
+    @Override
+    public void onClick(View curView) {
+        login = fieldLogin.getText().toString();
+        password = fieldPasswd.getText().toString();
+
+        if ( (login.length() > 0) && (password.length() > 0) ) {
 
             TextView ThrowConnect = (TextView) findViewById(R.id.ThrowConnect);
-            Button b = (Button) v;
+            Button b = (Button) curView;
             b.setText("Connexion en cours...");
-//keepLogin
-            CharSequence strKeeplog = null;
+
+        //keepLogin
+
+            SharedPreferences keptLog = getSharedPreferences("myLog", 0);//à supprimer, présent dès le onCreate de la main activity
             if (keepLogin.isChecked()) {
-                strKeeplog = "login enregistré";
-// setString(R.string.login=login); // att., impossible de mod. le strings.xml dynamiquement !
+                SharedPreferences.Editor editor = keptLog.edit();
+                editor.putString("login", login);
+                editor.putString("psswd", password);
+                editor.commit();
+                Toast toast = Toast.makeText(this, "login enregistré", Toast.LENGTH_SHORT);
+                toast.show();
             } else {
-                strKeeplog = "login non enregistré";
-// setString(R.string.login="login");
+                SharedPreferences.Editor editor = keptLog.edit();
+                editor.clear();
+                editor.commit();
             }
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(this, strKeeplog, duration);
-            toast.show();
+
+
 //CAS
 //Boolean connectionReussie = true;
 
-            login = fieldLogin.getText().toString();
-            password = fieldPasswd.getText().toString();
 
 
 //String ticket = Cas.getTicket(login, password);
@@ -84,8 +94,7 @@ Log.e("Cas.postData()", "I got an error", e);
 }
 */
 
-            login curLogin = fr.baptabl.reuniut.login.getInstance(login, password);// On cree l'utilisateur
-
+            login curLogin = fr.baptabl.reuniut.login.getInstance(login, password);//on crée l'utilisateur
 
             if (curLogin == null /* a décomenter lorsque on aura réussi à faire attendre la requête  || curLogin.getEmploi() == null || curLogin.getEmploi().montreEmploi() == null*/)//Si le constructeur a renvoyé une erreur
             {
@@ -109,36 +118,19 @@ Log.e("Cas.postData()", "I got an error", e);
             ad.show();
         }
     }
-/*
-@Override
-public Drawable getDrawable(String source) {
-Drawable retour = null;
-//Resources resources = context.getResources();
-retour = getResources().getDrawable(R.drawable.logo_utc);
-// On délimite l'image (depuis coin en haut à gauche jusqu'à son coin en bas à droite)
-retour.setBounds(0, 0, retour.getIntrinsicWidth(),
-retour.getIntrinsicHeight());
-return retour;
-}
+
+
+/* à faire : intégration image (logo)
+    @Override
+    public Drawable getDrawable(String source) {
+    Drawable retour = null;
+    //Resources resources = context.getResources();
+    retour = getResources().getDrawable(R.drawable.logo_utc);
+    // On délimite l'image (depuis coin en haut à gauche jusqu'à son coin en bas à droite)
+    retour.setBounds(0, 0, retour.getIntrinsicWidth(),
+    retour.getIntrinsicHeight());
+    return retour;
+    }
 */
-/*
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-// Inflate the menu; this adds items to the action bar if it is present.
-getMenuInflater().inflate(R.menu.menu_reuni_ut, menu);
-return true;
-}
-@Override
-public boolean onOptionsItemSelected(MenuItem item) {
-// Handle action bar item clicks here. The action bar will
-// automatically handle clicks on the Home/Up button, so long
-// as you specify a parent activity in AndroidManifest.xml.
-int id = item.getItemId();
-//noinspection SimplifiableIfStatement
-if (id == R.id.action_settings) {
-return true;
-}
-return super.onOptionsItemSelected(item);
-}
-*/
+
 }
