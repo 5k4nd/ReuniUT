@@ -1,30 +1,12 @@
 package fr.baptabl.reuniut;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 /**
  * Created by bat on 13/12/14.
  */
 
-
 public class login extends UTCeen{
     private static login Instance = null;
-    Context curContext;
+    //Context curContext; inutilisée
     private String mdp;
 
 
