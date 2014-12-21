@@ -7,6 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
 
 
 /**
@@ -25,13 +33,28 @@ public class ActivityReunion extends Activity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-    switch(v.getId())
-    {
-        case R.id.buttReunion:
-            Intent newActivity = new Intent(ActivityReunion.this, ActivityWaitReunion.class);
-            startActivity(newActivity);
-            break;
+    public void onClick(View v){
+        showSimplePopUp();
     }
+
+    private void showSimplePopUp() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Création de la réunion");
+        helpBuilder.setMessage("Nous sommes en train de chercher des créneaux. Veuillez patienter quelques instants...");
+        helpBuilder.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent newActivity = new Intent(ActivityReunion.this, ActivitySelectReunion.class);
+                        startActivity(newActivity);
+                    }
+                });
+
+        // Remember, create doesn't show the dialog
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
     }
+
 }
