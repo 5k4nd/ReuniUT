@@ -14,18 +14,24 @@ import android.widget.TextView;
  */
 public class ActivityReunion extends Activity implements View.OnClickListener {
     private Button buttReunion = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
-
         setContentView(R.layout.activity_reunion);
-
         buttReunion = (Button) findViewById(R.id.buttReunion);
         buttReunion.setOnClickListener(this);
     }
+
     @Override
-    public void onClick(View v) { this.finish(); }
-
-
+    public void onClick(View v) {
+    switch(v.getId())
+    {
+        case R.id.buttReunion:
+            Intent newActivity = new Intent(ActivityReunion.this, ActivityWaitReunion.class);
+            startActivity(newActivity);
+            break;
+    }
+    }
 }

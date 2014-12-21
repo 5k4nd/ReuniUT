@@ -25,6 +25,19 @@
     <string name="date_deb">Début (DD/MM/YYYY)</string>
     <string name="date_fin">Fin (DD/MM/YYYY)</string>
     <string name="Reunionchoix">Trouver un créneau</string>
+    <string name="creater">Création de la réunion</string>
+    <string name="loadingr">Nous sommes en train de chercher des créneaux. Merci de patienter quelques instants...</string>
+    <string name="selectr">Veuillez sélectionner un créneau parmi les suivants.</string>
+    <string name="selecttitle">Choisissez un créneau</string>
+
+    <string-array name="creneaux">
+        <item>Mardi 16/12 (17h30 - 19h30)</item>
+        <item>Mercredi 17/12 (19h30 - 21 h 30)</item>
+        <item>Mercredi 17/12 (19h30 - 21 h 30)</item>
+        <item>Mercredi 17/12 (19h30 - 21 h 30)</item>
+        <item>Mercredi 17/12 (19h30 - 21 h 30)</item>
+        <item>Mercredi 17/12 (19h30 - 21 h 30)</item>
+    </string-array>
 
     <string-array name="group_arrays">
         <item>Groupe 1</item>
