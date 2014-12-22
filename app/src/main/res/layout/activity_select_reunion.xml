@@ -23,12 +23,13 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tiltecreater"
+        android:id="@+id/fieldDescription"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textStyle="bold"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="#275d90"
         android:text="@string/creater"
         android:textSize="25sp"
         />
@@ -38,9 +39,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:text="@string/selectr"
-        android:textSize="18sp"
+        android:textColor="#4ea28e"
+        android:textSize="20sp"
         />
 
     <Spinner
@@ -56,8 +58,13 @@
         android:id="@+id/btnSelect"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Sélectionner le créneau" />
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/selecttitle"
+        android:textColor="#275d90"
+        />
 
 
 

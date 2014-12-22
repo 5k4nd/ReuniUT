@@ -1,6 +1,9 @@
 package fr.baptabl.reuniut;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -43,9 +46,27 @@ public class ActivitySelectReunion extends Activity {
 
             @Override
             public void onClick(View v) {
-
-
+                showSimplePopUp();
             }
         });
+    }
+
+    private void showSimplePopUp() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Sélection du créneau");
+        helpBuilder.setMessage("Vous avez sélectionné un créneau, une notification a été envoyée à l'ensemble des participants. ");
+        helpBuilder.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent newActivity = new Intent(ActivitySelectReunion.this, ActivityMenu.class);
+                        startActivity(newActivity);
+                    }
+                });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
     }
 }

@@ -34,14 +34,12 @@
             android:name=".ActivityReunion"
             >
         </activity>
-
-        <activity
-            android:name=".ActivityWaitReunion"
-            >
-        </activity>
-
         <activity
             android:name=".ActivitySelectReunion"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityGroupe"
             >
         </activity>
 
