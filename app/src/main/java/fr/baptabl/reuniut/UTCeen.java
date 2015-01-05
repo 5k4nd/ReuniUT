@@ -10,7 +10,7 @@ public class UTCeen{
     private Emploi emploi;
 
     //Constructor
-    public UTCeen(String nom,String prenom, String login, String edt, String Ulogin, String Umdp)//Constructeur pour les UTCeens autre que l'utilisateur
+    public UTCeen(String nom,String prenom, String login, String Ulogin, String Umdp)//Constructeur pour les UTCeens autre que l'utilisateur
     {
         //Verification de l'existence, récupération de l'emploi du temps
         this.nom=nom;

@@ -142,7 +142,7 @@ public class Reunion {
 		while (i.hasNext() && ens.get(i.nextIndex()).getFin().getTime()<=d.getTime())
 			/*Tant que les créneaux se finnissent avant que la plage ne commence*/
 		{
-			i.next();//On supprime l'élèment
+			i.next();//On incrémente
 		}
 		while (i.hasNext() && ens.get(i.nextIndex()).getDebut().getTime()<f.getTime())
 			/*Tant que  les créneaux commencent avant la fin*/
@@ -177,7 +177,7 @@ public class Reunion {
 
 	}
 	@SuppressWarnings("deprecation")
-	public EnsCreneau CreneauCommun(EnsCreneau ens, UTCeen U)
+	public void CreneauCommun(EnsCreneau ens, UTCeen U)
 	{
 		ListIterator<Creneau> i = ens.listIterator(0);
 		ListIterator<Creneau> u;
@@ -232,7 +232,7 @@ public class Reunion {
 			
 
 		}
-		return ens;
+
 	}
 	public void creneauxEssentiels(EnsCreneau ens)
 	{

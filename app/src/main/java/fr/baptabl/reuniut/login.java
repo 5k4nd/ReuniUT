@@ -28,7 +28,7 @@ public class login extends UTCeen{
     static public login getInstance() {//Accesseur "classique" de l'objet
         return Instance;
     }
-    static public boolean connexion(String login, String mdp) {// test de connexion
+    static public boolean connexion() {// test de connexion
         return true; //En attendant le test
     }
 
