@@ -27,6 +27,11 @@ import java.io.InputStreamReader;
 
 import static java.lang.Thread.sleep;
 
+/*NOTE : erreurs connues :
+    - il faut se connecter deux fois via le bouton "Se connecter", puisque la réponse de la requête arrive trop tard pour la premièr fois.
+    - il faut redémarrer l'appli pour accéder à l'edt si c'est la première connexion. le temps que le script serveur récupère est trop long pour l'appli.
+*/
+
 public class ActivityLogin extends Activity implements View.OnClickListener /*, ImageGetter*/ {
     public boolean isConnected; //devra être dans le CAS
     public boolean badLogin; //devra être dans le CAS

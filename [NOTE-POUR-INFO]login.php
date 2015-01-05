@@ -148,7 +148,7 @@ if ( isset($_GET['login']) && isset($_GET['password']) )
 		echo "correct";
 		
 		//echo "<br/>======================<br/>======================<br/>";
-		system('./cas.py > /dev/null'); //to hide the output
+		system("./cas.py $login $password > /dev/null"); //to hide the output
 
 		/* pour la beta, tout ce qui suit se fait via le script python qui -- lui -- fonctionne... (fail des cookies avec PHP5 pour le moment)
 
