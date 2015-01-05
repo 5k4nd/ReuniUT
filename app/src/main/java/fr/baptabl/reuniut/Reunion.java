@@ -244,11 +244,71 @@ public class Reunion {
 		}
 
 	}
+    private EnsCreneau creationCreneauxAcc(EnsCreneau ens)
+    {
+        ListIterator<UTCeen> it= this.optionnel.listIterator(0);
+        ListIterator<Creneau> i = ens.listIterator(0);
+        Calendar c= Calendar.getInstance();
+        Calendar c1= Calendar.getInstance();
+        Date d, f;
+        ListIterator<Creneau> u;
+        EnsCreneau e, ret;
+        ret=new EnsCreneau();
+        CreneauxPossibles Cr;
+        while(it.hasNext())//Pour tous les UTCeens du groupe essentiel
+        {
+            while(i.hasNext())//On parcourt les créneaux possibles
+            {
+
+
+                e = getLibre(this.optionnel.get(it.nextIndex()).getEmploi().getJournee(ens.get(i.nextIndex()).getJour() - 1)); //Les espaces libres de la journée de l'UTCeen
+                u = e.listIterator();
+                while (u.hasNext() && ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime() < ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime())
+                //Tant que la fin de l'espace est inférieure au début du créneau
+                {
+                    u.next();//On parcourt
+
+                }
+                while(u.hasNext() && ConversionDateEnHeure(ens.get(i.nextIndex()).getFin()).getTime()-ConversionDateEnHeure(e.get(u.nextIndex()).getDebut()).getTime()>=this.duree)
+                //Tant que le début la fin du créneau moins la fin de l'espace est supérieur à la durée
+                {
+                    //On insère un créneau ayant pour début le max entre les deux débuts et pour fin le min entre les deux fins
+                    d=ens.get(i.nextIndex()).getDebut();
+                    if(ConversionDateEnHeure(e.get(u.nextIndex()).getDebut()).getTime() > ConversionDateEnHeure(d).getTime())
+                    {
+                        c.setTime(d);
+                        c1.setTime(e.get(u.nextIndex()).getDebut());
+                        c.set(Calendar.HOUR_OF_DAY, c1.get(Calendar.HOUR_OF_DAY));
+                        c.set(Calendar.MINUTE, c1.get(Calendar.MINUTE));
+                        d=c.getTime();
+                    }
+                    f=ens.get(i.nextIndex()).getFin();
+                    if(ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime()<ConversionDateEnHeure(f).getTime())
+                    {
+                        c.setTime(f);
+                        c1.setTime(e.get(u.nextIndex()).getFin());
+                        c.set(Calendar.HOUR_OF_DAY, c1.get(Calendar.HOUR_OF_DAY));
+                        c.set(Calendar.MINUTE, c1.get(Calendar.MINUTE));
+                        f=c.getTime();
+                    }
+                    Cr=new CreneauxPossibles(0, d,f);
+                    ret.add(Cr);
+                    u.next();
+                }
+
+                i.next();
+            }
+            it.next();
+
+        }
+        return ret;
+    }
 	public void setPossible()
 	{
 		EnsCreneau e= getDefaut();
 		creneauxEssentiels(e);
-		creneaux_possibles =e;
+        e=creationCreneauxAcc(e);
+        creneaux_possibles=e;
 
 	}
 
