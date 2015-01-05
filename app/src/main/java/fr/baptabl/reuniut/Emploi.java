@@ -41,19 +41,16 @@ public class Emploi {
 
     public Emploi(String login, String mdp)
     {
-
-        //Tests de CAS à implémenter
-        new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/courbeje.edt");
+        Log.v("HTTP REQUEST", "on envoie le login: "+login);
+        //Tests de CAS implémentés. s'effectuent au login
+        new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/"+login+".edt");
         Log.v("HTTP REQUEST", "atteint");
 
     }
     public Emploi(String login, String Ulogin, String Umdp)//Constructeur pour les autres UTCeens
     {
-
-
-        //Tests de CAS à implémenter
+        //Tests de CAS implémentés. s'effectuent au login
         new HttpAsyncTask().execute("http://bat.demic.eu/cas/EDT/"+login+".edt");
-
 
     }
 	private void Construire_emploi(String edt)
@@ -96,7 +93,7 @@ public class Emploi {
             if(inputStream != null)
                 result = convertInputStreamToString(inputStream);
             else
-                result = "Contenu de requête NULL";
+                result = "NULL"; //Contenu de requête NULL
 
         } catch (Exception e) {
            // Log.d("INPUTSTREAM", e.getLocalizedMessage());

@@ -46,6 +46,7 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
         switch(v.getId()){
             case R.id.buttLogout:
                 this.finish();
+                //il faudrait ici détruire le singleton du CAS.
             break;
 
             case R.id.buttCreerGroupe:

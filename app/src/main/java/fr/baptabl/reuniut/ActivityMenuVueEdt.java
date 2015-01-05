@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by bat on 13/12/14.
  */
 
-//améliorer l'affichage...
+//améliorer l'affichage... ?
 
 public class ActivityMenuVueEdt extends Activity implements View.OnClickListener {
     private TextView vueEdt = null ;
@@ -33,7 +33,6 @@ public class ActivityMenuVueEdt extends Activity implements View.OnClickListener
         login curLogin = login.getInstance();
         String EDT = curLogin.getEmploi().montreEmploi();
         vueEdt.setText(EDT);
-
     }
 
     @Override
