@@ -25,7 +25,10 @@ public class login extends UTCeen{
         Groupe g= new Groupe(nom);
 
     }
-
+    public LinkedList<Groupe> getGroupe()
+    {
+        return groupes;
+    }
     //getInstance()
     static public login getInstance(String login, String mdp) {
         if (Instance == null) {
