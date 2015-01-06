@@ -6,7 +6,7 @@ package fr.baptabl.reuniut;
 
 public class login extends UTCeen{
     private static login Instance = null;
-    //Context curContext; inutilisée
+    //Context curContext;
     private String mdp;
 
 

@@ -35,10 +35,10 @@ import static java.lang.Thread.sleep;
 public class ActivityLogin extends Activity implements View.OnClickListener /*, ImageGetter*/ {
     public boolean isConnected; //devra être dans le CAS
     public boolean badLogin; //devra être dans le CAS
-    //public String tempTicket; inutilisée ?
+
     private String login;
-    private String password; //moyen de sécuriser ? autre que du simple String ?
-    static Context contextLayout; //quelle utilisation ? en l'état, c'est sale...
+    private String password; //à sécuriser, md5 ?.
+    static Context contextLayout;
 
     //RelativeLayout layout = null;
     private TextView logoUTC = null;
@@ -83,7 +83,7 @@ public class ActivityLogin extends Activity implements View.OnClickListener /*, 
             Button b = (Button) curView;
             b.setText("Connexion en cours...");
 
-            //BUG : cette requête ne fonctionnera jamais la première fois car elle ne se lance qu'à la fin du onClick. il faut donc cliquer deux fois sur "Se connecter" pour le moment...
+            //info : cette requête ne fonctionnera jamais la première fois car elle ne se lance qu'à la fin du onClick. il faut donc cliquer deux fois sur "Se connecter" pour le moment. cf multi-threading.
             new HttpAsyncTask().execute("http://bat.demic.eu/cas/login.php?login="+login+"&password="+password);
 
         //keepLogin
@@ -105,7 +105,7 @@ public class ActivityLogin extends Activity implements View.OnClickListener /*, 
         //test CAS de logins corrects
             int i = 0;
             while ( (i < 1) && (this.isConnected == false) ) {//augmenter le i pour les tests. initialement, c'était pour les tests d'attente de la requête. fail. il faut cliquer 2 fois sur se connecter pour le moment.
-                try {//on attend avec de la marge (oui c'est sale...) le retour de la requête. l'idéal serait d'attendre le retour de la requête avec une méthode d'HTTPrequest, ça serait *nettement* plus propre.
+                try {//on attend avec de la marge (peu académique) le retour de la requête. l'idéal serait d'attendre le retour de la requête avec une méthode de la classe HTTPrequest.
                     sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -217,7 +217,7 @@ public class ActivityLogin extends Activity implements View.OnClickListener /*, 
                 setConnexionStatus(true);
                 Log.v("connexionReussie :'", String.valueOf(isConnected));
             }
-            else {//sinon, est-ce que c'est une erreur de login ?
+            else {//sinon la connexion ne marche pas, tester si c'est une erreur de login
                 pos = result.indexOf("mauvais");
                 boolean mauvais = Boolean.parseBoolean(null);
                 if (pos >= 0) {
@@ -231,25 +231,5 @@ public class ActivityLogin extends Activity implements View.OnClickListener /*, 
         }
     }
 
-
-
-
-
-
-
-
-
-/* à faire : intégration image (logo)
-    @Override
-    public Drawable getDrawable(String source) {
-    Drawable retour = null;
-    //Resources resources = context.getResources();
-    retour = getResources().getDrawable(R.drawable.logo_utc);
-    // On délimite l'image (depuis coin en haut à gauche jusqu'à son coin en bas à droite)
-    retour.setBounds(0, 0, retour.getIntrinsicWidth(),
-    retour.getIntrinsicHeight());
-    return retour;
-    }
-*/
 
 }
