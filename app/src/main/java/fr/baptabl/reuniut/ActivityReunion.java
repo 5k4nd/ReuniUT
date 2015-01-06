@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * Created by quentinkeunebroek on 12/12/14.
@@ -39,7 +43,6 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
         String[] getGroups = login.getInstance().getGroupe();
-        System.out.println(getGroups.length);
         ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getGroups);
         adapter_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -101,10 +104,24 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
         dateDebut = fieldDateDebut.getText().toString();
         dateFin = fieldDateFin.getText().toString();
 
+
         if ( (reunionName.length() > 0) && (descriptif.length() > 0) && (group1.length() > 0) && (group2.length() > 0) && (dateDebut.length() > 0) && (dateFin.length() > 0) ) {
             //on envoie les données à la classe réunion
-
+            //on récupère d'abord les groupes correspondants
+            try
+            {
+            Groupe g1 = login.getInstance().getGroupe(group1);
+            Groupe g2 = login.getInstance().getGroupe(group2);
+            SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy" );
+            Date dateD = typeFormat.parse(dateDebut);
+            Date dateF = typeFormat.parse(dateFin);
+            Reunion Reu = new Reunion(g1, g2, dateD, dateF, reunionName, descriptif);
             this.finish();
+            }
+            catch (ParseException ex)
+            {
+                ex.printStackTrace();
+            }
         }
         else {
             AlertDialog ad = new AlertDialog.Builder(this)
