@@ -13,7 +13,7 @@ public class login extends UTCeen{
     //en chantier
 //Constructeur
     private login(String login, String mdp) {
-        super(login, mdp);//On fait appel au constructeur de UTCeen
+        super(login);//On fait appel au constructeur de UTCeen
         this.mdp=mdp;
 
     }

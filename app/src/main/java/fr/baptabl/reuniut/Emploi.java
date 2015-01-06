@@ -39,7 +39,7 @@ public class Emploi {
 
 	}
 
-    public Emploi(String login, String mdp)
+    public Emploi(String login)
     {
         Log.v("HTTP REQUEST", "on envoie le login: "+login);
         //Tests de CAS implémentés. s'effectuent au login
