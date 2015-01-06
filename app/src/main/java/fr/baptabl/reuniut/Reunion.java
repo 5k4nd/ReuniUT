@@ -24,12 +24,14 @@ public class Reunion {
 	private Date fin_max;
 	private long duree;
 	private String sujet;
+    private String description;
 	private EnsCreneauxPossibles creneaux_possibles;
 	private Creneau creneau_valide;
 	private boolean creneau_confirme;
 
 	//Constructor 
-	public Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet){
+	public Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet, String description){
+        this.description=description;
 		this.essentiel=essentiel;
 		this.optionnel=optionnel;
 		this.date_min=date_min;

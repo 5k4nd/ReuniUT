@@ -1,5 +1,8 @@
 package fr.baptabl.reuniut;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,15 +22,32 @@ public class login extends UTCeen{
     //Context curContext;
     private String mdp;
     private LinkedList<Groupe> groupes;
+    private LinkedList<Reunion> reunions;
 
 
-    //en chantier
 //Constructeur
     private login(String login, String mdp) {
         super(login);//On fait appel au constructeur de UTCeen
         this.mdp=mdp;
         groupes= new LinkedList<Groupe>();
+        reunions=new LinkedList<Reunion>();
 
+    }
+    public void addReunion(String group1, String group2, String dateDebut, String dateFin, String reunionName, String descriptif)
+    {
+        try
+        {
+            Groupe g1 = this.getGroupe(group1);
+            Groupe g2 = this.getInstance().getGroupe(group2);
+            SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy" );
+            Date dateD = typeFormat.parse(dateDebut);
+            Date dateF = typeFormat.parse(dateFin);
+            Reunion Reu = new Reunion(g1, g2, dateD, dateF, reunionName, descriptif);
+        }
+        catch (ParseException ex)
+        {
+            ex.printStackTrace();
+        }
     }
     public void addGroupe(String nom, String membres)
     {
@@ -51,6 +71,19 @@ public class login extends UTCeen{
             it.next();
         }
         return gr;
+    }
+    public Groupe getGroupe(String nom)
+    {
+        ListIterator<Groupe> it=groupes.listIterator(0);
+        while(it.hasNext())
+        {
+            if(groupes.get(it.nextIndex()).getNom() == nom)
+            {
+                break;
+            }
+            it.next();
+        }
+        return groupes.get(it.nextIndex());
     }
     //getInstance()
     static public login getInstance(String login, String mdp) {
