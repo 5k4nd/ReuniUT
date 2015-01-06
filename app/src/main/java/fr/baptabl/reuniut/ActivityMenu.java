@@ -46,22 +46,24 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
         switch(v.getId()){
             case R.id.buttLogout://quitte l'appli. dans la V2, détruit le singleton CAS et retourne à la page de login.
                 //this.finish();
-                System.exit(0);//redémarre l'appli, réinitialise les valeurs dont le isConnected du CAS
+                Intent newActivity = new Intent(ActivityMenu.this, ActivityVueReunion.class);
+                startActivity(newActivity);
+                //System.exit(0);//redémarre l'appli, réinitialise les valeurs dont le isConnected du CAS
             break;
+
+            case R.id.buttCreerReu:
+                Intent newActivity2 = new Intent(ActivityMenu.this, ActivityReunion.class);
+                startActivity(newActivity2);
+                break;
 
             case R.id.buttCreerGroupe:
                 Intent newActivity3 = new Intent(ActivityMenu.this, ActivityGroupe.class);
                 startActivity(newActivity3);
             break;
 
-            case R.id.buttCreerReu:
-                Intent newActivity2 = new Intent(ActivityMenu.this, ActivityReunion.class);
-                startActivity(newActivity2);
-            break;
-
             case R.id.buttVoirEDT:
-                Intent newActivity = new Intent(ActivityMenu.this, ActivityMenuVueEdt.class);
-                startActivity(newActivity);
+                Intent newActivity4 = new Intent(ActivityMenu.this, ActivityMenuVueEdt.class);
+                startActivity(newActivity4);
             break;
 
         }

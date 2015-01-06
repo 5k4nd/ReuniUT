@@ -28,6 +28,7 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
     private Spinner fieldSpinnerGroup2 = null;
     private EditText fieldDateDebut = null;
     private EditText fieldDateFin = null;
+    private EditText fieldDuree = null;
     private Button buttReunion = null;
 
     private String reunionName;
@@ -36,13 +37,14 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
     private String group2 = null;
     private String dateDebut;
     private String dateFin;
+    private long duree = 0;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
-        String[] getGroups = login.getInstance().getGroupe();
+        String[] getGroups = {"un","deux"}; //login.getInstance().getGroupe();
         ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getGroups);
         adapter_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -63,6 +65,7 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
 
         fieldDateDebut = (EditText) findViewById(R.id.fieldDateDebut);
         fieldDateFin = (EditText) findViewById(R.id.fieldDateFin);
+        fieldDuree = (EditText) findViewById(R.id.fieldDuree);
 
         buttReunion = (Button) findViewById(R.id.buttReunion);
         buttReunion.setOnClickListener(this);
@@ -103,21 +106,24 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
         descriptif = fieldDescriptif.getText().toString();
         dateDebut = fieldDateDebut.getText().toString();
         dateFin = fieldDateFin.getText().toString();
+        String tempDuree = fieldDuree.getText().toString();
+        duree = (long) Integer.parseInt(tempDuree);
 
-
-        if ( (reunionName.length() > 0) && (descriptif.length() > 0) && (group1.length() > 0) && (group2.length() > 0) && (dateDebut.length() > 0) && (dateFin.length() > 0) ) {
-            //on envoie les données à la classe réunion
-            //on récupère d'abord les groupes correspondants
+        if ( (reunionName.length() > 0) && (descriptif.length() > 0) && (group1.length() > 0) && (group2.length() > 0) && (dateDebut.length() > 0) && (dateFin.length() > 0) && (duree > 0) ) {
             try
             {
 
-                Groupe g1 = login.getInstance().getGroupe(group1);
-                Groupe g2 = login.getInstance().getGroupe(group2);
+                //Groupe g1 = login.getInstance().getGroupe(group1);
+                //Groupe g2 = login.getInstance().getGroupe(group2);
                 SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy" );
                 Date dateD = typeFormat.parse(dateDebut);
                 Date dateF = typeFormat.parse(dateFin);
-                login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif));
+                //login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif));
+
+                //à remplacer par une nouvelle activité
                 this.finish();
+
+
             }
             catch (ParseException ex)
             {

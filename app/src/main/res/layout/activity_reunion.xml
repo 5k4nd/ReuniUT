@@ -25,7 +25,6 @@
             />
     </RelativeLayout>
 
-    <!-- pas la place pour la description...
     <TextView
         android:id="@+id/fieldDescription"
         android:layout_width="fill_parent"
@@ -37,145 +36,162 @@
         android:text="@string/creater"
         android:textSize="25sp"
         />
-        -->
 
+    <!-- pas la place pour cet intitulé.
     <TextView
-        android:id="@+id/Intitule"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textColor="#4ea28e"
-        android:text="@string/intitule"
-        android:textSize="20sp"
+    android:id="@+id/Intitule"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="10dp"
+    android:textStyle="bold"
+    android:textColor="#4ea28e"
+    android:text="@string/intitule"
+    android:textSize="20sp"
 
-        />
+    />
+    -->
+
+<EditText
+    android:id="@+id/fieldReunionName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_centerHorizontal="true"
+    android:inputType="text"
+    android:hint="@string/reunion_name"
+    android:layout_gravity="center_horizontal" />
+
+    <!-- pas la place pour cet intitulé.
+    <TextView
+    android:id="@+id/Descriptif"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="25dp"
+    android:textColor="#4ea28e"
+    android:textStyle="bold"
+    android:text="@string/descriptif_name"
+    android:textSize="20sp"
+
+    />
+    -->
+
     <EditText
-        android:id="@+id/fieldReunionName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:inputType="text"
-        android:hint="@string/reunion_name"
-        android:layout_gravity="center_horizontal" />
+    android:id="@+id/fieldDescriptif"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_centerHorizontal="true"
+    android:inputType="text"
+    android:hint="@string/descriptif_reunion"
+    android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/Descriptif"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="25dp"
-        android:textColor="#4ea28e"
-        android:textStyle="bold"
-        android:text="@string/descriptif_name"
-        android:textSize="20sp"
+    android:id="@+id/Participants"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textColor="#4ea28e"
+    android:layout_marginTop="25dp"
+    android:textStyle="bold"
+    android:text="@string/choisissezGroupe"
+    android:textSize="20sp"
 
-        />
-
-    <EditText
-        android:id="@+id/fieldDescriptif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:inputType="text"
-        android:hint="@string/descriptif_reunion"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/Participants"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="#4ea28e"
-        android:layout_marginTop="25dp"
-        android:textStyle="bold"
-        android:text="@string/participants_reunion"
-        android:textSize="20sp"
-
-        />
+    />
 
     <TableLayout
         android:id="@+id/spinners"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="1"
-        >
-        <TableRow>
-            <Spinner
-                android:id="@+id/fieldSpinner1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:prompt="@string/participants_reunion"
-                android:gravity="center"
-                />
+        android:layout_centerHorizontal="true"
+        android:background="@color/red"
+    >
+    <TableRow>
+        <Spinner
+            android:id="@+id/fieldSpinner1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            />
 
-            <Spinner
-                android:id="@+id/fieldSpinner2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:prompt="@string/participants_reunion"
-                android:gravity="center"
-                />
-        </TableRow>
+        <Spinner
+            android:id="@+id/fieldSpinner2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            />
+    </TableRow>
     </TableLayout>
 
 
+        <!-- pas la place pour cet intitulé.
     <TextView
-        android:id="@+id/Creneau"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="#4ea28e"
-        android:layout_marginTop="25dp"
-        android:textStyle="bold"
-        android:text="@string/créneaux"
-        android:textSize="20sp"
+    android:id="@+id/Creneau"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textColor="#4ea28e"
+    android:layout_marginTop="25dp"
+    android:textStyle="bold"
+    android:text="@string/créneaux"
+    android:textSize="20sp"
 
-        />
+    />
+    -->
 
     <TableLayout
         android:id="@+id/tabledate"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stretchColumns="1"
-    >
-        <TableRow>
-            <EditText
-                android:id="@+id/fieldDateDebut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:inputType="text"
-                android:hint="@string/date_deb"
-                />
-            <EditText
-                android:id="@+id/fieldDateFin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:inputType="text"
-                android:hint="@string/date_fin"
-                />
-        </TableRow>
+        android:layout_centerHorizontal="true"
+        >
+    <TableRow>
+
+    <EditText
+        android:id="@+id/fieldDateDebut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:inputType="text"
+        android:hint="@string/date_deb"
+        />
+    <EditText
+        android:id="@+id/fieldDateFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:inputType="text"
+        android:hint="@string/date_fin"
+        />
+    </TableRow>
     </TableLayout>
 
-
+    <EditText
+        android:id="@+id/fieldDuree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:inputType="numberDecimal"
+        android:hint="@string/date_duree"
+        android:layout_gravity="center_horizontal"
+        />
 
     <Button
-        android:id="@+id/buttReunion"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:text="@string/Reunionchoix"
-        android:textColor="#275d90"
-        />
+    android:id="@+id/buttReunion"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="18dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:text="@string/Reunionchoix"
+    android:textColor="#275d90"
+    />
 
 </LinearLayout>
