@@ -24,7 +24,7 @@ public class Reunion {
 	private Date fin_max;
 	private long duree;
 	private String sujet;
-	private EnsCreneau creneaux_possibles;
+	private EnsCreneauxPossibles creneaux_possibles;
 	private Creneau creneau_valide;
 	private boolean creneau_confirme;
 
@@ -68,7 +68,7 @@ public class Reunion {
 	private void setOptionnel(Groupe groupe){
 		this.essentiel=groupe;
 	}
-	public EnsCreneau getPossibles()
+	public EnsCreneauxPossibles getPossibles()
 	{
 		return creneaux_possibles;
 	}
@@ -244,7 +244,7 @@ public class Reunion {
 		}
 
 	}
-    private EnsCreneau creationCreneauxAcc(EnsCreneau ens)
+    private EnsCreneauxPossibles creationCreneauxAcc(EnsCreneau ens)
     {
         ListIterator<UTCeen> it= this.optionnel.listIterator(0);
         ListIterator<Creneau> i = ens.listIterator(0);
@@ -252,8 +252,8 @@ public class Reunion {
         Calendar c1= Calendar.getInstance();
         Date d, f;
         ListIterator<Creneau> u;
-        EnsCreneau e, ret;
-        ret=new EnsCreneau();
+        EnsCreneau e;
+        EnsCreneauxPossibles ret=new EnsCreneauxPossibles();
         CreneauxPossibles Cr;
         while(it.hasNext())//Pour tous les UTCeens du groupe optionnel
         {
@@ -303,17 +303,18 @@ public class Reunion {
         }
         return ret;
     }
-    private void compteOptionnel(EnsCreneau ens) {
+    private void compteOptionnel(EnsCreneauxPossibles ens) {
         ListIterator<UTCeen> it = this.optionnel.listIterator(0);
-        ListIterator<Creneau> i = ens.listIterator(0);
+        ListIterator<CreneauxPossibles> i = ens.listIterator(0);
         Calendar c = Calendar.getInstance();
         Calendar c1 = Calendar.getInstance();
         Date d, f;
         ListIterator<Creneau> u;
         EnsCreneau e;
-        while(it.hasNext())//Pour tous les UTCeens du groupe optionnel
+        while (i.hasNext())//On parcourt les créneaux possibles
         {
-            while (i.hasNext())//On parcourt les créneaux possibles
+            ens.get(i.nextIndex()).setNbOptionnel(0);//On remet le compteur à zéro
+            while(it.hasNext())//Pour tous les UTCeens du groupe optionnel
             {
 
 
@@ -328,17 +329,19 @@ public class Reunion {
                 //Si le début de l'espace est inférieur ou égal au début du créneau et que la fin de l'espace est supérieur ou égal à la fin du créneau, donc si le créneau est libre pour l'étudiant
                 {
                     //On incrémente le nombre de participants
-                    //ens.get(i.nextIndex()).
+                    ens.get(i.nextIndex()).incOpt();
                 }
+                it.next();
             }
+            i.next();
         }
     }
 	public void setPossible()
 	{
 		EnsCreneau e= getDefaut();
 		creneauxEssentiels(e);
-        e=creationCreneauxAcc(e);
-        creneaux_possibles=e;
+        creneaux_possibles=creationCreneauxAcc(e);
+        compteOptionnel(creneaux_possibles);
 
 	}
 
