@@ -35,8 +35,12 @@ public class login extends UTCeen{
     }
     public void addReunion(Reunion reu)
     {
+        reunions.add(reu);
 
-
+    }
+    public Reunion getReunion(int i)
+    {
+        return reunions.get(i);
     }
     public void addGroupe(String nom, String membres)
     {

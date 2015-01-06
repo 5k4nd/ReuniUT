@@ -26,17 +26,20 @@ public class Reunion {
 	private String sujet;
     private String description;
 	private EnsCreneauxPossibles creneaux_possibles;
+    private EnsCreneau Cessentiel;
 	private Creneau creneau_valide;
 	private boolean creneau_confirme;
 
 	//Constructor 
-	public Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet, String description){
+	public Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet, String description, int d){
         this.description=description;
 		this.essentiel=essentiel;
 		this.optionnel=optionnel;
 		this.date_min=date_min;
 		this.fin_max=fin_max;
 		this.sujet=sujet;
+        this.duree=d*60000;
+        setPossible();
 
 	}
 	public Reunion(Date dmin, Date fmax, long d)//La duréee est à entrer en seconde
@@ -134,6 +137,10 @@ public class Reunion {
 		return e;
 
 	}
+    public String montreReunion()
+    {
+        return Cessentiel.montreEnsCreneau();
+    }
 	public EnsCreneau getLibre(EnsCreneau ens)
 	{
 		Date d= this.ConversionDateEnHeure(date_min);
@@ -149,7 +156,6 @@ public class Reunion {
 		while (i.hasNext() && ens.get(i.nextIndex()).getDebut().getTime()<f.getTime())
 			/*Tant que  les créneaux commencent avant la fin*/
 		{
-			//System.out.println(ens.get(i.nextIndex()).montreCreneau());
 			if(ens.get(i.nextIndex()).getDebut().getTime()-d.getTime()>=duree)
 				/*Si la différence entre le début du créneau suivant et le début de la plage horraire restante est suffisament grand*/
 			{
@@ -342,6 +348,7 @@ public class Reunion {
 	{
 		EnsCreneau e= getDefaut();
 		creneauxEssentiels(e);
+        Cessentiel=e;
         creneaux_possibles=creationCreneauxAcc(e);
         compteOptionnel(creneaux_possibles);
 
