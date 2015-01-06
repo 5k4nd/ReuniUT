@@ -1,5 +1,7 @@
 package fr.baptabl.reuniut;
 
+import java.util.LinkedList;
+
 /**
  * Created by bat on 13/12/14.
  */
@@ -8,6 +10,7 @@ public class login extends UTCeen{
     private static login Instance = null;
     //Context curContext;
     private String mdp;
+    private LinkedList<Groupe> groupes;
 
 
     //en chantier
@@ -15,6 +18,11 @@ public class login extends UTCeen{
     private login(String login, String mdp) {
         super(login);//On fait appel au constructeur de UTCeen
         this.mdp=mdp;
+
+    }
+    public void addGroupe(String nom, String membres)
+    {
+        Groupe g= new Groupe(nom);
 
     }
 

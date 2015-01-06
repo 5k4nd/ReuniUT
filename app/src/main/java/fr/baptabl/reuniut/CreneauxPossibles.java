@@ -26,6 +26,10 @@ public class CreneauxPossibles extends Creneau{
     public int getNbOptionnel(){
     	return nbOptionnel;
     }
+    public void incOpt()
+    {
+        nbOptionnel++;
+    }
 
     public void setNbOptionnel(int nbOptionnnel){
     	this.nbOptionnel=nbOptionnel;

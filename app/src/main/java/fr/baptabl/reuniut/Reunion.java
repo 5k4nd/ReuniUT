@@ -255,7 +255,7 @@ public class Reunion {
         EnsCreneau e, ret;
         ret=new EnsCreneau();
         CreneauxPossibles Cr;
-        while(it.hasNext())//Pour tous les UTCeens du groupe essentiel
+        while(it.hasNext())//Pour tous les UTCeens du groupe optionnel
         {
             while(i.hasNext())//On parcourt les créneaux possibles
             {
@@ -302,6 +302,36 @@ public class Reunion {
 
         }
         return ret;
+    }
+    private void compteOptionnel(EnsCreneau ens) {
+        ListIterator<UTCeen> it = this.optionnel.listIterator(0);
+        ListIterator<Creneau> i = ens.listIterator(0);
+        Calendar c = Calendar.getInstance();
+        Calendar c1 = Calendar.getInstance();
+        Date d, f;
+        ListIterator<Creneau> u;
+        EnsCreneau e;
+        while(it.hasNext())//Pour tous les UTCeens du groupe optionnel
+        {
+            while (i.hasNext())//On parcourt les créneaux possibles
+            {
+
+
+                e = getLibre(this.optionnel.get(it.nextIndex()).getEmploi().getJournee(ens.get(i.nextIndex()).getJour() - 1)); //Les espaces libres de la journée de l'UTCeen
+                u = e.listIterator();
+                while (u.hasNext() && ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime() < ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime())
+                //Tant que la fin de l'espace est inférieure au début du créneau
+                {
+                    u.next();//On parcourt
+                }
+                if (u.hasNext() && ConversionDateEnHeure(e.get(u.nextIndex()).getDebut()).getTime()>=ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime() && ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime() <= ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime())
+                //Si le début de l'espace est inférieur ou égal au début du créneau et que la fin de l'espace est supérieur ou égal à la fin du créneau, donc si le créneau est libre pour l'étudiant
+                {
+                    //On incrémente le nombre de participants
+                    //ens.get(i.nextIndex()).
+                }
+            }
+        }
     }
 	public void setPossible()
 	{
