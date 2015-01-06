@@ -44,7 +44,7 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
-        String[] getGroups = {"un","deux"}; //login.getInstance().getGroupe();
+        String[] getGroups = login.getInstance().getGroupe();
         ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getGroups);
         adapter_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -113,12 +113,12 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
             try
             {
 
-                //Groupe g1 = login.getInstance().getGroupe(group1);
-                //Groupe g2 = login.getInstance().getGroupe(group2);
+                Groupe g1 = login.getInstance().getGroupe(group1);
+                Groupe g2 = login.getInstance().getGroupe(group2);
                 SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy" );
                 Date dateD = typeFormat.parse(dateDebut);
                 Date dateF = typeFormat.parse(dateFin);
-                //login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif));
+                login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif));
 
                 //à remplacer par une nouvelle activité
                 this.finish();
