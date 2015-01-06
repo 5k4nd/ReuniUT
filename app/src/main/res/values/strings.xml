@@ -35,6 +35,9 @@
     <string name="choisissezGroupe">Choisissez un groupe</string>
     <string name="participants_groupe">Login des participants, séparés par des virgules :</string>
     <string name="créneaux">Spécifiez les créneaux</string>
+    <string name="envoyerMail">Envoyer le mail-push</string>
+    <string name="fermer">Retour à l\'accueil</string>
+    <string name="choisissezCreneau">Voici les créneaux possibles. Veuillez en sélectionner un.</string>
 
 
     <string-array name="creneaux">

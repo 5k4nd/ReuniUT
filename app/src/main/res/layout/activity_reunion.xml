@@ -97,7 +97,6 @@
     android:textStyle="bold"
     android:text="@string/choisissezGroupe"
     android:textSize="20sp"
-
     />
 
     <TableLayout

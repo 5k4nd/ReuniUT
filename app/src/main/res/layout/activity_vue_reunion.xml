@@ -13,11 +13,25 @@
     android:orientation="vertical"
     >
 
+
+    <TextView
+        android:id="@+id/infoCreneau"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#4ea28e"
+        android:layout_marginTop="45dp"
+        android:textStyle="bold"
+        android:text="@string/choisissezCreneau"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"
+        />
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_below="@id/infoCreneau"
         android:background="#4ea28e"
         android:gravity="center" >
 
@@ -38,30 +52,53 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
         android:layout_above="@+id/buttRetour"
-        >
+        android:id="@+id/scrollView"><![CDATA[
 
-        <Spinner
-            android:id="@+id/fieldSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
         />
+    ]]></ScrollView>
 
-    />
-    </ScrollView>
-
-    <Button
-        android:id="@+id/buttRetour"
+    <TextView
+        android:id="@+id/infoMail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/retour"
+        android:gravity="center"
+        android:textColor="#4ea28e"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttMail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/envoyerMail"
+        android:textColor="#275d90"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="2dp"
+        />
+
+    <Button
+        android:id="@+id/buttFermer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fermer"
         android:textColor="#275d90"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="2dp"
         android:layout_marginTop="2dp"
         />
 
+    <Spinner
+        android:id="@+id/fieldSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/infoCreneau"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
 

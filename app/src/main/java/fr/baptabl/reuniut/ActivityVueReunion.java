@@ -2,13 +2,24 @@ package fr.baptabl.reuniut;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by bat on 06/01/15.
@@ -17,16 +28,22 @@ import android.widget.Toast;
 public class ActivityVueReunion extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private /*CreneauxPossibles*/ String[] creneaux = {"creneau1","creneau2", "creneau3"}; /*null;*/
     private String reunionName = null;
-    private Spinner fieldSpinner = null ;
-    private Button buttRetour = null;
-
+    private String fromLogin = null;
     private String creneauFinal = null;
+    private String participants = null;
+
+    private Spinner fieldSpinner = null ;
+    private Button buttMail = null;
+    private TextView infoMail = null;
+    private Button buttFermer = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
         reunionName = i.getStringExtra("reunionName");
+        fromLogin = "abelbapt"; //login.???;
+        participants = "abelbapt,courbeje"; //get???
 
         //creneaux = login.getCreneauReu(reunionName));
         String[] creneaux = {"un","dos","tres"};
@@ -40,9 +57,12 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
         fieldSpinner.setAdapter(adapter_state);
         fieldSpinner.setOnItemSelectedListener(this);
 
-        buttRetour = (Button) findViewById(R.id.buttRetour);
-        buttRetour.setOnClickListener(this);
+        buttMail = (Button) findViewById(R.id.buttMail);
+        buttMail.setOnClickListener(this);
+        infoMail = (TextView) findViewById(R.id.infoMail);
 
+        buttFermer = (Button) findViewById(R.id.buttFermer);
+        buttFermer.setOnClickListener(this);
     }
 
 
@@ -60,10 +80,62 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.buttMail:
+            //send mail
+                new HttpAsyncTask().execute("http://bat.demic.eu/cas/mail_push.php?fromlogin="+fromLogin+"&creneau="+creneauFinal+"&participants="+participants);
+                infoMail.setText("La notification push-mail a été envoyée à tous vos collègues.");
+            break;
 
-        Toast toast = Toast.makeText(this, creneauFinal, Toast.LENGTH_SHORT);
-        toast.show();
-        this.finish();
+            case R.id.buttFermer:
+                System.exit(0);
+            break;
+        }
     }
+
+    //requêtes HTTP
+    public static String getHTTP(String url){
+        InputStream inputStream = null;
+        String result = "";
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
+            inputStream = httpResponse.getEntity().getContent();
+
+            if(inputStream != null)
+                result = convertInputStreamToString(inputStream);
+            else
+                result = "NULL"; //Contenu de requête NULL
+
+        } catch (Exception e) {
+            // Log.d("INPUTSTREAM", e.getLocalizedMessage());
+        }
+
+        return result;
+    }
+
+    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        String line = "";
+        String result = "";
+        while((line = bufferedReader.readLine()) != null)
+            result += line;
+
+        inputStream.close();
+        return result;
+    }
+
+    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            return getHTTP(urls[0]);
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            //pas besoin d'un quelconque retour cette fois-ci.
+        }
+    }
+
+
 
 }
