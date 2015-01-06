@@ -31,7 +31,7 @@ public class ActivityMenuVueEdt extends Activity implements View.OnClickListener
 
         Log.d("login.getInstance", "in ActivityMenu for ActivityMenuVueEdt");
         login curLogin = login.getInstance();
-        String EDT = curLogin.getReunion(0).sujet+curLogin.getReunion(0).montreReunion();
+        String EDT = curLogin.getEmploi().montreEmploi();
         vueEdt.setText(EDT);
     }
 
