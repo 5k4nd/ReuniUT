@@ -18,10 +18,16 @@ public class UTCeen{
         this.login=login;
         this.emploi = new Emploi(login, Ulogin, Umdp);
     }
-    public UTCeen(String login, String mdp){
+    /*public UTCeen(String login, String mdp){
         //Verification de l'existence, récupération de l'emploi du temps
         this.login=login;
         this.emploi = new Emploi(login, mdp);
+    }*/
+    //Constructeur propre
+    public UTCeen(String login){
+        //Verification de l'existence, récupération de l'emploi du temps
+        this.login=login;
+        this.emploi = new Emploi(login);
     }
     public String montreUTCeen()
     {
