@@ -43,8 +43,8 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         //Button buttLogout = (Button) v;
-        switch(v.getId()){//quitte l'appli. dans la V2, détruit le singleton CAS et retourne à la page de login.
-            case R.id.buttLogout:
+        switch(v.getId()){
+            case R.id.buttLogout://quitte l'appli. dans la V2, détruit le singleton CAS et retourne à la page de login.
                 //this.finish();
                 System.exit(0);//redémarre l'appli, réinitialise les valeurs dont le isConnected du CAS
             break;
