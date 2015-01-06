@@ -26,12 +26,11 @@ public class Reunion {
 	private String sujet;
     private String description;
 	private EnsCreneauxPossibles creneaux_possibles;
-    private EnsCreneau Cessentiel;
 	private Creneau creneau_valide;
 	private boolean creneau_confirme;
 
 	//Constructor 
-	public Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet, String description, int d){
+	public Reunion(Groupe essentiel, Groupe optionnel, Date date_min, Date fin_max, String sujet, String description, long d){
         this.description=description;
 		this.essentiel=essentiel;
 		this.optionnel=optionnel;
@@ -139,7 +138,7 @@ public class Reunion {
 	}
     public String montreReunion()
     {
-        return Cessentiel.montreEnsCreneau();
+        return creneaux_possibles.montreEnsCreneau();
     }
 	public EnsCreneau getLibre(EnsCreneau ens)
 	{
@@ -348,7 +347,6 @@ public class Reunion {
 	{
 		EnsCreneau e= getDefaut();
 		creneauxEssentiels(e);
-        Cessentiel=e;
         creneaux_possibles=creationCreneauxAcc(e);
         compteOptionnel(creneaux_possibles);
 
