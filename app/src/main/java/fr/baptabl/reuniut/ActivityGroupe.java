@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,10 +38,14 @@ public class ActivityGroupe extends Activity implements View.OnClickListener {
     public void onClick(View v){
         groupName = fieldGroupName.getText().toString();
         logins = fieldLogins.getText().toString();
+        Log.v("1", "atteint");
 
         if ( (groupName.length() > 0) && (logins.length() > 0) ) {
-            //on envoie groupName et logins à la classe login
-
+            Log.v("2", "atteint");
+            login curLog=login.getInstance();
+            Log.v("3", "atteint");
+            curLog.addGroupe(groupName, logins);
+            Log.v("4", "atteint");
             this.finish();
         }
         else {

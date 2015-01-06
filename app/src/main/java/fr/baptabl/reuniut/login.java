@@ -25,6 +25,7 @@ public class login extends UTCeen{
     private login(String login, String mdp) {
         super(login);//On fait appel au constructeur de UTCeen
         this.mdp=mdp;
+        groupes= new LinkedList<Groupe>();
 
     }
     public void addGroupe(String nom, String membres)
@@ -33,6 +34,7 @@ public class login extends UTCeen{
         String m[]=membres.split(",");
         for (int i = 0; i < m.length; i++)
         {
+            m[i]=m[i].replace(" ", "");
             g.add(new UTCeen(m[i]));
         }
         groupes.add(g);
