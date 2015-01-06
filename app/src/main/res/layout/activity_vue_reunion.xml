@@ -39,12 +39,22 @@
         android:layout_below="@id/header"
         android:layout_above="@+id/buttRetour"
         >
-        <TextView
-        android:id="@+id/vueEdt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/defaut"
-        android:textSize="20sp"
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
         />
     </ScrollView>
 
@@ -60,6 +70,5 @@
         />
 
 
-
-
 </RelativeLayout>
+

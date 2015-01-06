@@ -42,6 +42,10 @@
             android:name=".ActivityGroupe"
             >
         </activity>
+        <activity
+            android:name=".ActivityVueReunion"
+            >
+        </activity>
 
 
     </application>
