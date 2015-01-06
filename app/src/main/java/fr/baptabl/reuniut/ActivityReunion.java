@@ -115,10 +115,10 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
 
                 Groupe g1 = login.getInstance().getGroupe(group1);
                 Groupe g2 = login.getInstance().getGroupe(group2);
-                SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy" );
+                SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy HH:mm" );
                 Date dateD = typeFormat.parse(dateDebut);
                 Date dateF = typeFormat.parse(dateFin);
-                login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif));
+                login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif, duree));
 
                 //à remplacer par une nouvelle activité
                 this.finish();
