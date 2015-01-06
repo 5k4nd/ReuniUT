@@ -108,7 +108,21 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
         if ( (reunionName.length() > 0) && (descriptif.length() > 0) && (group1.length() > 0) && (group2.length() > 0) && (dateDebut.length() > 0) && (dateFin.length() > 0) ) {
             //on envoie les données à la classe réunion
             //on récupère d'abord les groupes correspondants
-            login.getInstance().addReunion(group1, group2, dateDebut, dateFin, reunionName, descriptif);
+            try
+            {
+
+                Groupe g1 = login.getInstance().getGroupe(group1);
+                Groupe g2 = login.getInstance().getGroupe(group2);
+                SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy" );
+                Date dateD = typeFormat.parse(dateDebut);
+                Date dateF = typeFormat.parse(dateFin);
+                login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif));
+                this.finish();
+            }
+            catch (ParseException ex)
+            {
+                ex.printStackTrace();
+            }
 
         }
         else {

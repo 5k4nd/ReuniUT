@@ -33,21 +33,10 @@ public class login extends UTCeen{
         reunions=new LinkedList<Reunion>();
 
     }
-    public void addReunion(String group1, String group2, String dateDebut, String dateFin, String reunionName, String descriptif)
+    public void addReunion(Reunion reu)
     {
-        try
-        {
-            Groupe g1 = this.getGroupe(group1);
-            Groupe g2 = this.getInstance().getGroupe(group2);
-            SimpleDateFormat typeFormat = new SimpleDateFormat( "dd/MM/yyyy" );
-            Date dateD = typeFormat.parse(dateDebut);
-            Date dateF = typeFormat.parse(dateFin);
-            Reunion Reu = new Reunion(g1, g2, dateD, dateF, reunionName, descriptif);
-        }
-        catch (ParseException ex)
-        {
-            ex.printStackTrace();
-        }
+
+
     }
     public void addGroupe(String nom, String membres)
     {
