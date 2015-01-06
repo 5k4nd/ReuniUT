@@ -18,8 +18,8 @@ import java.text.*;
  */
 
 public class Creneau implements java.lang.Comparable<Creneau>{
-	private Date debut;
-	private Date fin;
+	protected Date debut;
+	protected Date fin;
 	private String activite;
 	private Lieu lieu;
 

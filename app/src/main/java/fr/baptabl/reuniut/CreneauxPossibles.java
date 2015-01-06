@@ -22,7 +22,15 @@ public class CreneauxPossibles extends Creneau{
     	this.nbOptionnel=nbOptionnel;
     }
 
-
+    public String montreCreneau()
+    {
+        String d;
+        String f;
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM HH:mm");//On définit un format de date
+        d = df.format(debut);
+        f = df.format(fin);
+        return "Début à "+d+", et fin à "+f+", nombre 'o : "+nbOptionnel+"\n";
+    }
     public int getNbOptionnel(){
     	return nbOptionnel;
     }
