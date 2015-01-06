@@ -1,7 +1,14 @@
 package fr.baptabl.reuniut;
 
 import java.util.LinkedList;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Collections;
+import java.lang.String;
 /**
  * Created by bat on 13/12/14.
  */
@@ -23,6 +30,12 @@ public class login extends UTCeen{
     public void addGroupe(String nom, String membres)
     {
         Groupe g= new Groupe(nom);
+        String m[]=membres.split(",");
+        for (int i = 0; i < m.length; i++)
+        {
+            g.add(new UTCeen(m[i]));
+        }
+        groupes.add(g);
 
     }
     public LinkedList<Groupe> getGroupe()
