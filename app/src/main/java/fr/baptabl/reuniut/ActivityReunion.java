@@ -54,11 +54,9 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
         fieldDescriptif = (EditText) findViewById(R.id.fieldDescriptif);
 
         fieldSpinnerGroup1 = (Spinner) findViewById(R.id.fieldSpinner1);
-        fieldSpinnerGroup1 = (Spinner) findViewById(R.id.fieldSpinner1);
         fieldSpinnerGroup1.setAdapter(adapter_state);
         fieldSpinnerGroup1.setOnItemSelectedListener(this);
 
-        fieldSpinnerGroup2 = (Spinner) findViewById(R.id.fieldSpinner2);
         fieldSpinnerGroup2 = (Spinner) findViewById(R.id.fieldSpinner2);
         fieldSpinnerGroup2.setAdapter(adapter_state);
         fieldSpinnerGroup2.setOnItemSelectedListener(this);
@@ -120,10 +118,7 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
                 Date dateF = typeFormat.parse(dateFin);
                 login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif, duree));
 
-                //à remplacer par une nouvelle activité
                 this.finish();
-
-
             }
             catch (ParseException ex)
             {

@@ -40,22 +40,15 @@
         android:layout_above="@+id/buttRetour"
         >
 
-        <RadioGroup
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/fieldSpinner"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RadioGroup>
+            android:layout_marginTop="10dp"
+            android:gravity="center"
         />
+
+    />
     </ScrollView>
 
     <Button
