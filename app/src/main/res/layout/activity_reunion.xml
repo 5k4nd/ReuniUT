@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     >
 
-
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -24,27 +23,28 @@
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             />
-
     </RelativeLayout>
 
+    <!-- pas la place pour la description...
     <TextView
         android:id="@+id/fieldDescription"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:textColor="#275d90"
         android:text="@string/creater"
         android:textSize="25sp"
         />
+        -->
 
     <TextView
-        android:id="@+id/fieldIntitule"
+        android:id="@+id/Intitule"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textColor="#4ea28e"
         android:text="@string/intitule"
@@ -52,7 +52,7 @@
 
         />
     <EditText
-        android:id="@+id/reunionname"
+        android:id="@+id/fieldReunionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -62,7 +62,7 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/fieldDescriptif"
+        android:id="@+id/Descriptif"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -75,7 +75,7 @@
         />
 
     <EditText
-        android:id="@+id/descriptif"
+        android:id="@+id/fieldDescriptif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -85,26 +85,58 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/fieldParticipant"
+        android:id="@+id/Participants"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#4ea28e"
         android:layout_marginTop="25dp"
         android:textStyle="bold"
-        android:text="@string/participant_reunion"
+        android:text="@string/participants_reunion"
         android:textSize="20sp"
 
         />
 
-    <Spinner
-        android:id="@+id/spinner1"
+    <TableLayout
+        android:id="@+id/spinners"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:entries="@array/group_arrays"
-        android:prompt="@string/participant_reunion"
-        android:gravity="center"/>
+        android:stretchColumns="1"
+        >
+        <TableRow>
+            <Spinner
+                android:id="@+id/fieldSpinner1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:prompt="@string/participants_reunion"
+                android:gravity="center"
+                />
+
+            <Spinner
+                android:id="@+id/fieldSpinner2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:prompt="@string/participants_reunion"
+                android:gravity="center"
+                />
+        </TableRow>
+    </TableLayout>
+
+
+    <TextView
+        android:id="@+id/Creneau"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#4ea28e"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        android:text="@string/créneaux"
+        android:textSize="20sp"
+
+        />
 
     <TableLayout
         android:id="@+id/tabledate"
@@ -112,32 +144,24 @@
         android:layout_height="wrap_content"
         android:stretchColumns="1"
     >
-
         <TableRow>
             <EditText
-                android:id="@+id/datedebut"
+                android:id="@+id/fieldDateDebut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:inputType="text"
                 android:hint="@string/date_deb"
-
-
-              />
-
-
+                />
             <EditText
-                android:id="@+id/datefin"
+                android:id="@+id/fieldDateFin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:inputType="text"
                 android:hint="@string/date_fin"
-
-               />
-
+                />
         </TableRow>
-
     </TableLayout>
 
 

@@ -52,7 +52,7 @@
 
         />
     <EditText
-        android:id="@+id/reunionname"
+        android:id="@+id/fieldGroupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -62,33 +62,30 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/fieldParticipant"
+        android:id="@+id/titleParticipant"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#4ea28e"
         android:layout_marginTop="25dp"
         android:textStyle="bold"
-        android:text="@string/participant_reunion"
+        android:text="@string/participants_groupe"
         android:textSize="20sp"
-
         />
 
-    <Spinner
-        android:id="@+id/spinner1"
+    <EditText
+        android:id="@+id/fieldLogins"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:entries="@array/group_arrays"
-        android:prompt="@string/membres_groupe"
-        android:gravity="center"/>
+        android:gravity="center"
+        />
 
     <Button
-        android:id="@+id/buttReunion"
+        android:id="@+id/buttCreerGroupe"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:text="@string/Reunionchoix"

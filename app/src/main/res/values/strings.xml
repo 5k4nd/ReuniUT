@@ -22,7 +22,6 @@
     <string name="groupe_name">Nom du groupe</string>
     <string name="descriptif_reunion">Ecrire le descriptif de la réunion</string>
     <string name="descriptif_name">Descriptif de la réunion</string>
-    <string name="participant_reunion">Sélection des participants</string>
     <string name="membres_groupe">Sélection des membres</string>
     <string name="date_deb">Début (DD/MM/YYYY)</string>
     <string name="date_fin">Fin (DD/MM/YYYY)</string>
@@ -32,6 +31,9 @@
     <string name="loadingr">Nous sommes en train de chercher des créneaux. Merci de patienter quelques instants...</string>
     <string name="selectr">Veuillez sélectionner un créneau parmi les suivants.</string>
     <string name="selecttitle">Choisissez un créneau</string>
+    <string name="participants_reunion">Choisissez un groupe</string>
+    <string name="participants_groupe">Login des participants, séparés par des virgules :</string>
+    <string name="créneaux">Spécifiez les créneaux</string>
 
     <string-array name="creneaux">
         <item>Mardi 16/12 (17h30 - 19h30)</item>
@@ -47,5 +49,7 @@
         <item>Groupe 2</item>
         <item>Groupe 3</item>
     </string-array>
+
+
 
 </resources>
