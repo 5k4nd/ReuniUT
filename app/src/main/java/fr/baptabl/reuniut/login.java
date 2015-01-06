@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Collections;
@@ -40,9 +41,16 @@ public class login extends UTCeen{
         groupes.add(g);
 
     }
-    public LinkedList<Groupe> getGroupe()
+    public String[] getGroupe()
     {
-        return groupes;
+        ListIterator<Groupe> it=groupes.listIterator(0);
+        String gr[]=new String[this.groupes.size()];
+        while(it.hasNext())
+        {
+            gr[it.nextIndex()]=this.groupes.get(it.nextIndex()).getNom();//On récupère les noms des groupes dans un tableau
+            it.next();
+        }
+        return gr;
     }
     //getInstance()
     static public login getInstance(String login, String mdp) {

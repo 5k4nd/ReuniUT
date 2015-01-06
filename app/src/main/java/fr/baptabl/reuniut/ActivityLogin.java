@@ -123,7 +123,7 @@ public class ActivityLogin extends Activity implements View.OnClickListener /*, 
 
             Log.v("CONNECTÉ ?", "on teste le isConnected qui vaut :");
             Log.v("CONNECTÉ ?", String.valueOf(this.isConnected));
-            if ( ( this.isConnected == false) || (curLogin == null) /* a décomenter lorsque on aura réussi à faire attendre la requête  || curLogin.getEmploi() == null || curLogin.getEmploi().montreEmploi() == null*/)//Si le constructeur a renvoyé une erreur
+            if ( ( this.isConnected == false) || (curLogin == null) )//Si le constructeur a renvoyé une erreur
             {
                 curLogin = null;
                 b.setText("Se connecter");

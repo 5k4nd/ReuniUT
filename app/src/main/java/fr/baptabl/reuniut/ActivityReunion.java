@@ -38,7 +38,7 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
-        String[] getGroups = {"etUnGroupe","etDeuxGroupe"};
+        String[] getGroups = login.getInstance().getGroupe();
         System.out.println(getGroups.length);
         ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getGroups);
         adapter_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
