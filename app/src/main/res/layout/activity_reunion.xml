@@ -30,8 +30,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
         android:textColor="#275d90"
         android:text="@string/creater"
         android:textSize="25sp"
@@ -87,25 +87,39 @@
     android:hint="@string/descriptif_reunion"
     android:layout_gravity="center_horizontal" />
 
-    <TextView
-    android:id="@+id/Participants"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:textColor="#4ea28e"
-    android:layout_marginTop="25dp"
-    android:textStyle="bold"
-    android:text="@string/choisissezGroupe"
-    android:textSize="20sp"
-    />
 
     <TableLayout
         android:id="@+id/spinners"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:stretchColumns="1"
         android:layout_centerHorizontal="true"
     >
+        <TableRow>
+        <TextView
+            android:id="@+id/fieldEssentieltext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#4ea28e"
+            android:layout_marginTop="5dp"
+            android:text="@string/essentiel"
+            android:textSize="20sp"
+            />
+            <TextView
+                android:id="@+id/fieldOptionneltext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#4ea28e"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/optionnel"
+                android:textSize="20sp"
+                />
+        </TableRow>
     <TableRow>
         <Spinner
             android:id="@+id/fieldSpinner1"
@@ -114,7 +128,6 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             />
-
         <Spinner
             android:id="@+id/fieldSpinner2"
             android:layout_width="fill_parent"
@@ -148,6 +161,28 @@
         android:stretchColumns="1"
         android:layout_centerHorizontal="true"
         >
+        <TableRow>
+        <TextView
+            android:id="@+id/fielddatebegintext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#4ea28e"
+            android:layout_marginTop="5dp"
+            android:text="@string/deb"
+            android:textSize="20sp"
+            />
+            <TextView
+                android:id="@+id/fielddateendtext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#4ea28e"
+                android:layout_marginTop="5dp"
+                android:text="@string/fin"
+                android:textSize="20sp"
+                />
+        </TableRow>
     <TableRow>
 
     <EditText
@@ -185,7 +220,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:layout_marginTop="18dp"
+    android:layout_marginTop="20dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:text="@string/Reunionchoix"
