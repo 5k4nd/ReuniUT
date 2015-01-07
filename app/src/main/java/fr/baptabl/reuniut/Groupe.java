@@ -26,10 +26,9 @@ public class Groupe extends LinkedList<UTCeen>{
 	{
 		Iterator<UTCeen> i= this.iterator();
 		StringBuilder sb = new StringBuilder("");
-        sb.append(nom+"\n");
 		while(i.hasNext())
 		{
-			sb.append(i.next().montreUTCeen()+"\n");
+			sb.append(i.next().montreUTCeen()+",");
 		}
 		return sb.toString();
 	}

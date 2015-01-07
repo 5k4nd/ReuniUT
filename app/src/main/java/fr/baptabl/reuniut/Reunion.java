@@ -116,6 +116,11 @@ public class Reunion {
         }
         return gr;
     }
+    public String getMembres()
+    {
+        return essentiel.montreGroupe()+","+optionnel.montreGroupe();
+
+    }
 	@SuppressWarnings("deprecation")
 	private EnsCreneau getDefaut()
 	{
