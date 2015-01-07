@@ -23,9 +23,9 @@
     <string name="descriptif_reunion">Descriptif de la réunion</string>
     <string name="descriptif_name">Descriptif de la réunion</string>
     <string name="membres_groupe">Sélection des membres</string>
-    <string name="date_deb">dd/mm/yyyy  hh/mm</string>
+    <string name="date_deb">dd/mm/yyyy  hh:mm</string>
     <string name="deb">Début</string>
-    <string name="date_fin">dd/mm/yyyy  hh/mm</string>
+    <string name="date_fin">dd/mm/yyyy  hh:mm</string>
     <string name="fin">Fin</string>
     <string name="date_duree">Durée (en minutes)</string>
     <string name="Reunionchoix">Trouver un créneau</string>

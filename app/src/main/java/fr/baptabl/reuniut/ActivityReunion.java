@@ -118,7 +118,10 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
                 Date dateF = typeFormat.parse(dateFin);
                 login.getInstance().addReunion(new Reunion(g1, g2, dateD, dateF, reunionName, descriptif, duree));
 
-                this.finish();
+                Intent newActivity = new Intent(ActivityReunion.this, ActivityVueReunion.class);
+                newActivity.putExtra("reunionName", reunionName);
+                startActivity(newActivity);
+
             }
             catch (ParseException ex)
             {

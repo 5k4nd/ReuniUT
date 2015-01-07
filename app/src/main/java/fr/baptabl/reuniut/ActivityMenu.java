@@ -45,13 +45,7 @@ public class ActivityMenu extends Activity implements View.OnClickListener {
         //Button buttLogout = (Button) v;
         switch(v.getId()){
             case R.id.buttLogout://quitte l'appli. dans la V2, détruit le singleton CAS et retourne à la page de login.
-
-                String reunionName = "firtReunionEver";
-                Intent newActivity = new Intent(ActivityMenu.this, ActivityVueReunion.class);
-                newActivity.putExtra("reunionName", reunionName);
-                startActivity(newActivity);
-                //this.finish();
-
+                this.finish();
                 //System.exit(0);//redémarre l'appli, réinitialise les valeurs dont le isConnected du CAS
             break;
 

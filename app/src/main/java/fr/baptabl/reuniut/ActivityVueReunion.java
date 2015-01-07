@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -41,9 +42,11 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
+        fromLogin = login.getInstance().getLogin();
         reunionName = i.getStringExtra("reunionName");
-        fromLogin = "abelbapt"; //login.???;
-        participants = "abelbapt,courbeje"; //get???
+        Reunion curReu = login.getInstance().getReunion(reunionName);
+
+        participants = curReu.getMembres();
 
         //creneaux = login.getCreneauReu(reunionName));
         String[] creneaux = {"un","dos","tres"};
@@ -57,6 +60,7 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
         fieldSpinner.setAdapter(adapter_state);
         fieldSpinner.setOnItemSelectedListener(this);
 
+        //pour la V2. les boutons ci-dessous ne s'affichent pas tant que le spinner n'a pas été utilisé.
         buttMail = (Button) findViewById(R.id.buttMail);
         buttMail.setOnClickListener(this);
         infoMail = (TextView) findViewById(R.id.infoMail);
@@ -83,7 +87,10 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
         switch(v.getId()){
             case R.id.buttMail:
             //send mail
-                new HttpAsyncTask().execute("http://bat.demic.eu/cas/mail_push.php?fromlogin="+fromLogin+"&creneau="+creneauFinal+"&participants="+participants);
+                //new HttpAsyncTask().execute("http://bat.demic.eu/cas/mail_push.php?fromlogin="+fromLogin+"&creneau="+creneauFinal+"&participants="+participants);
+                String duTexte = "http://bat.demic.eu/cas/mail_push.php?fromlogin="+fromLogin+"&creneau="+creneauFinal+"&participants="+participants;
+                Toast toast = Toast.makeText(this, duTexte, Toast.LENGTH_LONG);
+                toast.show();
                 infoMail.setText("La notification push-mail a été envoyée à tous vos collègues.");
             break;
 
