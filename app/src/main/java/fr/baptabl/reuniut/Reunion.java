@@ -49,6 +49,7 @@ public class Reunion {
 	}
 
 	//Getters and Setters
+    public String getSujet(){return sujet;}
 	public Date getMin()
 	{
 		return date_min;
@@ -104,6 +105,17 @@ public class Reunion {
 		else
 			return d1;
 	}
+    public String[] getCreneaux()
+    {
+        ListIterator<CreneauxPossibles> it=creneaux_possibles.listIterator(0);
+        String gr[]=new String[this.creneaux_possibles.size()];
+        while(it.hasNext())
+        {
+            gr[it.nextIndex()]=this.creneaux_possibles.get(it.nextIndex()).montreCreneau();//On récupère les noms des groupes dans un tableau
+            it.next();
+        }
+        return gr;
+    }
 	@SuppressWarnings("deprecation")
 	private EnsCreneau getDefaut()
 	{

@@ -54,6 +54,7 @@ public class login extends UTCeen{
         groupes.add(g);
 
     }
+
     public String[] getGroupe()
     {
         ListIterator<Groupe> it=groupes.listIterator(0);
@@ -77,6 +78,19 @@ public class login extends UTCeen{
             it.next();
         }
         return groupes.get(it.nextIndex());
+    }
+    public Reunion getReunion(String nom)
+    {
+        ListIterator<Reunion> it=reunions.listIterator(0);
+        while(it.hasNext())
+        {
+            if(reunions.get(it.nextIndex()).getSujet() == nom)
+            {
+                break;
+            }
+            it.next();
+        }
+        return reunions.get(it.nextIndex());
     }
     //getInstance()
     static public login getInstance(String login, String mdp) {
