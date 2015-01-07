@@ -23,22 +23,25 @@
     <string name="descriptif_reunion">Descriptif de la réunion</string>
     <string name="descriptif_name">Descriptif de la réunion</string>
     <string name="membres_groupe">Sélection des membres</string>
-    <string name="date_deb">Début (DD/MM/YYYY)</string>
-    <string name="date_fin">Fin (DD/MM/YYYY)</string>
-    <string name="date_duree">Durée (nombre entier)</string>
+    <string name="date_deb">dd/mm/yyyy  hh/mm</string>
+    <string name="deb">Début</string>
+    <string name="date_fin">dd/mm/yyyy  hh/mm</string>
+    <string name="fin">Fin</string>
+    <string name="date_duree">Durée (en minutes)</string>
     <string name="Reunionchoix">Trouver un créneau</string>
     <string name="creater">Création de la réunion</string>
     <string name="createg">Création du groupe</string>
+    <string name="createdg">Créer le groupe</string>
     <string name="loadingr">Nous sommes en train de chercher des créneaux. Merci de patienter quelques instants...</string>
     <string name="selectr">Veuillez sélectionner un créneau parmi les suivants.</string>
     <string name="selecttitle">Choisissez un créneau</string>
-    <string name="choisissezGroupe">Choisissez un groupe</string>
     <string name="participants_groupe">Login des participants, séparés par des virgules :</string>
     <string name="créneaux">Spécifiez les créneaux</string>
     <string name="envoyerMail">Envoyer le mail-push</string>
     <string name="fermer">Retour à l\'accueil</string>
     <string name="choisissezCreneau">Voici les créneaux possibles. Veuillez en sélectionner un.</string>
-
+    <string name="essentiel">Groupe essentiel</string>
+    <string name="optionnel">Groupe optionnel</string>
 
     <string-array name="creneaux">
         <item>Mardi 16/12 (17h30 - 19h30)</item>
