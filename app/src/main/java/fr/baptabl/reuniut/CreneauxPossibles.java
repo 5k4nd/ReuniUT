@@ -39,8 +39,8 @@ public class CreneauxPossibles extends Creneau{
         nbOptionnel++;
     }
 
-    public void setNbOptionnel(int nbOptionnnel){
-    	this.nbOptionnel=nbOptionnel;
+    public void setNbOptionnel(int nb){
+    	this.nbOptionnel=nb;
     }
    
 

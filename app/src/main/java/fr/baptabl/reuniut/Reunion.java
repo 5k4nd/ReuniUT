@@ -26,6 +26,7 @@ public class Reunion {
 	private String sujet;
     private String description;
 	private EnsCreneauxPossibles creneaux_possibles;
+    public EnsCreneau crnp;
 	private Creneau creneau_valide;
 	private boolean creneau_confirme;
 
@@ -254,7 +255,7 @@ public class Reunion {
     private EnsCreneauxPossibles creationCreneauxAcc(EnsCreneau ens)
     {
         ListIterator<UTCeen> it= this.optionnel.listIterator(0);
-        ListIterator<Creneau> i = ens.listIterator(0);
+        ListIterator<Creneau> i;
         Calendar c= Calendar.getInstance();
         Calendar c1= Calendar.getInstance();
         Date d, f;
@@ -264,6 +265,7 @@ public class Reunion {
         CreneauxPossibles Cr;
         while(it.hasNext())//Pour tous les UTCeens du groupe optionnel
         {
+            i = ens.listIterator(0);
             while(i.hasNext())//On parcourt les créneaux possibles
             {
 
@@ -311,7 +313,7 @@ public class Reunion {
         return ret;
     }
     private void compteOptionnel(EnsCreneauxPossibles ens) {
-        ListIterator<UTCeen> it = this.optionnel.listIterator(0);
+        ListIterator<UTCeen> it;
         ListIterator<CreneauxPossibles> i = ens.listIterator(0);
         Calendar c = Calendar.getInstance();
         Calendar c1 = Calendar.getInstance();
@@ -321,18 +323,18 @@ public class Reunion {
         while (i.hasNext())//On parcourt les créneaux possibles
         {
             ens.get(i.nextIndex()).setNbOptionnel(0);//On remet le compteur à zéro
+            it = this.optionnel.listIterator(0);
             while(it.hasNext())//Pour tous les UTCeens du groupe optionnel
             {
 
-
                 e = getLibre(this.optionnel.get(it.nextIndex()).getEmploi().getJournee(ens.get(i.nextIndex()).getJour() - 1)); //Les espaces libres de la journée de l'UTCeen
-                u = e.listIterator();
+                u = e.listIterator(0);
                 while (u.hasNext() && ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime() < ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime())
                 //Tant que la fin de l'espace est inférieure au début du créneau
                 {
                     u.next();//On parcourt
                 }
-                if (u.hasNext() && ConversionDateEnHeure(e.get(u.nextIndex()).getDebut()).getTime()>=ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime() && ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime() <= ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime())
+                if (u.hasNext() && ConversionDateEnHeure(e.get(u.nextIndex()).getDebut()).getTime()<=ConversionDateEnHeure(ens.get(i.nextIndex()).getDebut()).getTime() && ConversionDateEnHeure(e.get(u.nextIndex()).getFin()).getTime() >= ConversionDateEnHeure(ens.get(i.nextIndex()).getFin()).getTime())
                 //Si le début de l'espace est inférieur ou égal au début du créneau et que la fin de l'espace est supérieur ou égal à la fin du créneau, donc si le créneau est libre pour l'étudiant
                 {
                     //On incrémente le nombre de participants
@@ -347,8 +349,9 @@ public class Reunion {
 	{
 		EnsCreneau e= getDefaut();
 		creneauxEssentiels(e);
+        crnp=e;
         creneaux_possibles=creationCreneauxAcc(e);
-        //compteOptionnel(creneaux_possibles);
+        compteOptionnel(creneaux_possibles);
 
 	}
 
