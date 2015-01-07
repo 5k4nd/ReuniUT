@@ -31,7 +31,7 @@ public class UTCeen{
     }
     public String montreUTCeen()
     {
-    	String u = this.login+"\n"+getEmploi().montreEmploi();
+    	String u = this.login;
     	return u;
     }
     //Getters & Setters
