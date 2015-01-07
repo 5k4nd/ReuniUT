@@ -111,14 +111,14 @@ public class Reunion {
         String gr[]=new String[this.creneaux_possibles.size()];
         while(it.hasNext())
         {
-            gr[it.nextIndex()]=this.creneaux_possibles.get(it.nextIndex()).montreCreneau();//On récupère les noms des groupes dans un tableau
+            gr[it.nextIndex()]=this.creneaux_possibles.get(it.nextIndex()).montreCreneau();//On récupère les creneaux dans un tableau
             it.next();
         }
         return gr;
     }
     public String getMembres()
     {
-        return essentiel.montreGroupe()+","+optionnel.montreGroupe();
+        return essentiel.montreGroupe()+optionnel.montreGroupe();
 
     }
 	@SuppressWarnings("deprecation")

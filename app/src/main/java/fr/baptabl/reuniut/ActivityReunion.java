@@ -107,7 +107,7 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
 
     @Override
     public void onClick(View v){
-        reunionName = fieldReunionName.getText().toString();
+        reunionName = fieldReunionName.getText().toString().trim();
         descriptif = fieldDescriptif.getText().toString();
         dateDebut = fieldDateDebut.getText().toString();
         dateFin = fieldDateFin.getText().toString();

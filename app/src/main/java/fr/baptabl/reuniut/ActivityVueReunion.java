@@ -46,10 +46,9 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
         reunionName = i.getStringExtra("reunionName");
         Reunion curReu = login.getInstance().getReunion(reunionName);
 
-        //participants = curReu.getMembres();
+        participants = curReu.getMembres();
 
-        //creneaux = login.getCreneauReu(reunionName));
-        String[] creneaux = {"un","dos","tres"};
+        String[] creneaux = curReu.getCreneaux();
         ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, creneaux);
         adapter_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 

@@ -71,7 +71,7 @@ public class login extends UTCeen{
         ListIterator<Groupe> it=groupes.listIterator(0);
         while(it.hasNext())
         {
-            if(groupes.get(it.nextIndex()).getNom() == nom)
+            if(groupes.get(it.nextIndex()).getNom().equals(nom))
             {
                 break;
             }
@@ -84,7 +84,7 @@ public class login extends UTCeen{
         ListIterator<Reunion> it=reunions.listIterator(0);
         while(it.hasNext())
         {
-            if(reunions.get(it.nextIndex()).getSujet() == nom)
+            if(reunions.get(it.nextIndex()).getSujet().equals(nom))
             {
                 break;
             }
