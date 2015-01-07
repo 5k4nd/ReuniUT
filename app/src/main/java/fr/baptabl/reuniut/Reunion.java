@@ -26,7 +26,6 @@ public class Reunion {
 	private String sujet;
     private String description;
 	private EnsCreneauxPossibles creneaux_possibles;
-    public EnsCreneau crnp;
 	private Creneau creneau_valide;
 	private boolean creneau_confirme;
 
@@ -349,7 +348,6 @@ public class Reunion {
 	{
 		EnsCreneau e= getDefaut();
 		creneauxEssentiels(e);
-        crnp=e;
         creneaux_possibles=creationCreneauxAcc(e);
         compteOptionnel(creneaux_possibles);
 

@@ -32,7 +32,7 @@ public class ActivityMenuVueEdt extends Activity implements View.OnClickListener
         Log.d("login.getInstance", "in ActivityMenu for ActivityMenuVueEdt");
         login curLogin = login.getInstance();
         //String EDT = curLogin.getEmploi().montreEmploi();
-        String EDT = curLogin.getReunion(0).crnp.montreEnsCreneau()+"\n Et après \n"+curLogin.getReunion(0).montreReunion();
+        String EDT = curLogin.montreUTCeen();
         vueEdt.setText(EDT);
     }
 
