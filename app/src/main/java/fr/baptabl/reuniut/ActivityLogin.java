@@ -84,8 +84,8 @@ public class ActivityLogin extends Activity implements View.OnClickListener /*, 
             b.setText("Connexion en cours...");
 
             //info : cette requête ne fonctionnera jamais la première fois car elle ne se lance qu'à la fin du onClick. il faut donc cliquer deux fois sur "Se connecter" pour le moment. cf multi-threading.
-            //new HttpAsyncTask().execute("http://bat.demic.eu/cas/login.php?login="+login+"&password="+password);
-            this.isConnected = true;
+            new HttpAsyncTask().execute("http://bat.demic.eu/cas/login.php?login="+login+"&password="+password);
+            //this.isConnected = true;
 
 
 

@@ -69,11 +69,13 @@ public class ActivityReunion extends Activity implements View.OnClickListener, A
         buttReunion.setOnClickListener(this);
 
     //champs par défaut pour les tests.
+        /*
         fieldReunionName.setText("ourFirstReu");
         fieldDescriptif.setText("une description");
         fieldDateDebut.setText("17/01/2015 00:00");
         fieldDateFin.setText("17/01/2015 23:00");
         fieldDuree.setText("30");
+        */
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

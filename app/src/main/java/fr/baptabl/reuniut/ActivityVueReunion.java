@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -86,10 +86,11 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
         switch(v.getId()){
             case R.id.buttMail:
             //send mail
-                //new HttpAsyncTask().execute("http://bat.demic.eu/cas/mail_push.php?fromlogin="+fromLogin+"&creneau="+creneauFinal+"&participants="+participants);
-                String duTexte = "http://bat.demic.eu/cas/mail_push.php?fromlogin="+fromLogin+"&creneau="+creneauFinal+"&participants="+participants;
-                Toast toast = Toast.makeText(this, duTexte, Toast.LENGTH_LONG);
-                toast.show();
+                String GETrequest = "http://bat.demic.eu/cas/mail_push.php?fromlogin="+fromLogin+"&creneau="+creneauFinal+"&participants="+participants;
+                GETrequest = GETrequest.replace(" ","%20");
+                GETrequest = GETrequest.replace("à","%C3%A0");
+                new HttpAsyncTask().execute(GETrequest);
+                Log.v("on envoie : '", GETrequest+"'");
                 infoMail.setText("La notification push-mail a été envoyée à tous vos collègues.");
             break;
 
