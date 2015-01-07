@@ -46,7 +46,7 @@ public class ActivityVueReunion extends Activity implements View.OnClickListener
         reunionName = i.getStringExtra("reunionName");
         Reunion curReu = login.getInstance().getReunion(reunionName);
 
-        participants = curReu.getMembres();
+        //participants = curReu.getMembres();
 
         //creneaux = login.getCreneauReu(reunionName));
         String[] creneaux = {"un","dos","tres"};

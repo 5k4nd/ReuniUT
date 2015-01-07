@@ -35,10 +35,6 @@
             >
         </activity>
         <activity
-            android:name=".ActivitySelectReunion"
-            >
-        </activity>
-        <activity
             android:name=".ActivityGroupe"
             >
         </activity>
