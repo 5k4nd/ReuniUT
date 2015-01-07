@@ -29,7 +29,7 @@ public class CreneauxPossibles extends Creneau{
         SimpleDateFormat df = new SimpleDateFormat("dd/MM HH:mm");//On définit un format de date
         d = df.format(debut);
         f = df.format(fin);
-        return "Début à "+d+", et fin à "+f+", nombre 'o : "+nbOptionnel+"\n";
+        return d+" à "+f+"o : "+nbOptionnel;
     }
     public int getNbOptionnel(){
     	return nbOptionnel;
